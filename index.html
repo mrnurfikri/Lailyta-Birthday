@@ -42,7 +42,7 @@
         }
 
         /* ==========================================================================
-           2. HIGH-QUALITY MP4 VIDEO CURTAIN LAYER
+           2. MP4 VIDEO LAYER (WHITE BACKGROUND REMOVAL & ZOOM)
            ========================================================================== */
         .curtain-video-container {
             position: absolute;
@@ -52,14 +52,21 @@
             height: 100%;
             z-index: 12;
             cursor: pointer;
-            background-color: #000; /* Biar hitam mulus sebelum video termuat */
+            background: transparent; 
             transition: opacity 1s ease 0.5s, visibility 1s ease 0.5s;
         }
 
         #bgVideo {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Memaksa video memenuhi layar tanpa merusak rasio */
+            object-fit: cover;
+            
+            /* KUNCI TRANSPARANSI BARU: Menghapus background PUTIH pekat pada video */
+            mix-blend-mode: multiply; 
+            
+            /* KUNCI ZOOM: Melakukan perbesaran video sebesar 115% */
+            transform: scale(1.15); 
+            transform-origin: center center;
         }
 
         /* Petunjuk Teks Klik */
@@ -69,12 +76,15 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 14;
-            color: #ffd700;
+            
+            /* Mengubah warna teks ke biru tua/merah tua agar terbaca jelas di atas tirai putih/terang */
+            color: #1a237e; 
+            
             text-align: center;
             pointer-events: none;
             transition: opacity 0.4s ease;
             animation: bounce 2s infinite ease-in-out;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+            text-shadow: 0 1px 3px rgba(255,255,255,0.8);
         }
 
         /* Efek Menghilang Setelah Video Selesai Diputar */
@@ -105,7 +115,6 @@
             background-size: 4px 4px;
             position: relative;
             
-            /* Animasi muncul perlahan dari balik video */
             opacity: 0;
             transform: scale(0.96);
             transition: opacity 1.5s ease 0.2s, transform 1.5s ease 0.2s;
@@ -158,7 +167,7 @@
             </video>
             
             <div class="click-prompt" id="promptText">
-                <p style="font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 5px;">TAP TO OPEN</p>
+                <p style="font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 5px; font-weight: bold;">TAP TO OPEN</p>
                 <span style="font-size: 1.8rem;">✦</span>
             </div>
         </div>
@@ -228,25 +237,17 @@
         const wrapper = document.getElementById('curtainVideoWrapper');
         const promptText = document.getElementById('promptText');
 
-        // Memastikan video langsung memuat frame pertama (tirai tertutup) saat web dibuka
         video.addEventListener('loadeddata', () => {
             video.pause();
             video.currentTime = 0; 
         });
 
         function startCurtainVideo() {
-            // Sembunyikan tulisan 'TAP TO OPEN' seketika saat diklik
             promptText.style.opacity = '0';
-            
-            // Putar video tirai terbuka
             video.play();
-            
-            // Kunci klik agar tidak terjadi spam klik selama video berputar
             wrapper.style.pointerEvents = 'none';
 
-            // Mendeteksi otomatis ketika durasi video MP4 kamu selesai diputar
             video.onended = function() {
-                // Berikan kelas fade-out agar video menghilang halus dan memperlihatkan ucapan
                 wrapper.classList.add('fade-out');
             };
         }
