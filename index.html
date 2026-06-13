@@ -42,7 +42,7 @@
         }
 
         /* ==========================================================================
-           2. PURE MP4 TRANSPARENT VIDEO LAYER & ZOOM
+           2. MP4 TRANSPARENT VIDEO LAYER & ZOOM
            ========================================================================== */
         .curtain-video-container {
             position: absolute;
@@ -50,23 +50,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 12;
+            /* Z-index 12 memastikan video berada persis di ATAS teks ucapan di awal */
+            z-index: 12; 
             cursor: pointer;
             background: transparent; 
-            transition: opacity 0.8s ease 0.4s, visibility 0.8s ease 0.4s;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
         #bgVideo {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            
-            /* KUNCI ZOOM: Melakukan perbesaran video sebesar 115% */
             transform: scale(1.15); 
             transform-origin: center center;
         }
 
-        /* Petunjuk Teks Klik (Warna kembali ke Emas Mewah karena video sudah transparan) */
+        /* Petunjuk Teks Klik */
         .click-prompt {
             position: absolute;
             top: 55%;
@@ -76,12 +75,12 @@
             color: #ffd700; 
             text-align: center;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.3s ease;
             animation: bounce 2s infinite ease-in-out;
             text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
 
-        /* Efek Menghilang Setelah Video Selesai Diputar */
+        /* Efek memudar halus wadah video HANYA saat video benar-benar sudah beres */
         .curtain-video-container.fade-out {
             opacity: 0;
             visibility: hidden;
@@ -93,7 +92,7 @@
         }
 
         /* ==========================================================================
-           3. CELESTIAL CONTENT LAYER
+           3. CELESTIAL CONTENT LAYER (STANDBY & TERLIHAT DARI AWAL)
            ========================================================================== */
         .content-layer {
             width: 100%;
@@ -107,15 +106,11 @@
             background-color: #fdfaf2;
             background-image: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
             background-size: 4px 4px;
-            position: relative;
             
-            opacity: 0;
-            transform: scale(0.96);
-            transition: opacity 1.2s ease 0.1s, transform 1.2s ease 0.1s;
-        }
-
-        /* Muncul ketika gorden memudar */
-        .curtain-video-container.fade-out + .content-layer {
+            /* KUNCI PERUBAHAN: Berada di z-index 1 (di bawah video) dan di-set selalu 100% terlihat.
+               Jadi ketika tirai video terbuka, objek ini langsung mengintip secara natural di celah video. */
+            position: relative;
+            z-index: 1; 
             opacity: 1;
             transform: scale(1);
         }
@@ -237,10 +232,14 @@
         });
 
         function startCurtainVideo() {
+            // Hilangkan teks 'TAP TO OPEN' seketika
             promptText.style.opacity = '0';
+            
+            // Mainkan video tirai terbuka
             video.play();
             wrapper.style.pointerEvents = 'none';
 
+            // Begitu video selesai, hapus layer video agar user bisa klik teks/piala di bawahnya
             video.onended = function() {
                 wrapper.classList.add('fade-out');
             };
