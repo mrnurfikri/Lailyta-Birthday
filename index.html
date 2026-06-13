@@ -20,7 +20,7 @@
         }
 
         body {
-            background-color: #0c0b0a; /* Latar belakang luar gelap agar fokus ke kartu */
+            background-color: #0c0b0a;
             font-family: 'Cinzel', serif;
             overflow: hidden;
             height: 100vh;
@@ -29,7 +29,6 @@
             align-items: center;
         }
 
-        /* CONTAINER UTAMA (Rasio kartu undangan digital) */
         .card-container {
             position: relative;
             width: 100%;
@@ -43,61 +42,27 @@
         }
 
         /* ==========================================================================
-           2. INTERACTIVE HERO: THE CURTAIN (TIRAI MERAH)
+           2. HIGH-QUALITY MP4 VIDEO CURTAIN LAYER
            ========================================================================== */
-        .curtain-wrapper {
+        .curtain-video-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 10;
-            cursor: pointer;
-            display: flex;
-            overflow: hidden;
-        }
-
-        /* Efek Tekstur Tirai Beludru Merah */
-        .curtain-panel {
-            position: absolute;
-            top: 0;
-            width: 51%; /* Sedikit overlap di tengah agar tidak bocor */
-            height: 100%;
-            background: linear-gradient(90deg, #6e1313, #b83232 25%, #d64545 50%, #b83232 75%, #5a0f0f);
-            box-shadow: inset 0 0 40px rgba(0,0,0,0.7);
-            transition: transform 2s cubic-bezier(0.66, 0, 0.2, 1);
-            filter: contrast(1.1) saturate(1.1);
             z-index: 12;
+            cursor: pointer;
+            background-color: #000; /* Biar hitam mulus sebelum video termuat */
+            transition: opacity 1s ease 0.5s, visibility 1s ease 0.5s;
         }
 
-        .curtain-left {
-            left: 0;
-            transform-origin: left center;
-            border-right: 1px solid #4a0a0a;
-        }
-
-        .curtain-right {
-            right: 0;
-            transform-origin: right center;
-            border-left: 1px solid #4a0a0a;
-        }
-
-        /* Tirai Lengkung Permanen Atas */
-        .curtain-top-valance {
-            position: absolute;
-            top: 0;
-            left: 0;
+        #bgVideo {
             width: 100%;
-            height: 140px;
-            background: radial-gradient(ellipse at top, #d64545, #6e1313 80%);
-            border-bottom: 3px solid #5a0f0f;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            border-radius: 0 0 50% 50% / 0 0 25px 25px;
-            z-index: 13;
-            transition: transform 1.5s ease-in-out;
+            height: 100%;
+            object-fit: cover; /* Memaksa video memenuhi layar tanpa merusak rasio */
         }
 
-        /* Petunjuk Klik Tirai */
+        /* Petunjuk Teks Klik */
         .click-prompt {
             position: absolute;
             top: 55%;
@@ -107,30 +72,24 @@
             color: #ffd700;
             text-align: center;
             pointer-events: none;
-            /* Transisi cepat khusus untuk menghilangkan tulisan */
-            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: opacity 0.4s ease;
             animation: bounce 2s infinite ease-in-out;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
 
-        /* ANIMASI KETIKA TIRAI DIBUKA */
-        .curtain-wrapper.opened .curtain-left {
-            transform: translateX(-100%) scaleX(0.2); 
-        }
-        .curtain-wrapper.opened .curtain-right {
-            transform: translateX(100%) scaleX(0.2); 
-        }
-        .curtain-wrapper.opened .curtain-top-valance {
-            transform: translateY(-20px); 
-        }
-        
-        /* SOLUSI KOREKSI: Tulisan langsung hilang total tanpa bekas saat class 'opened' aktif */
-        .curtain-wrapper.opened .click-prompt {
-            opacity: 0 !important;
+        /* Efek Menghilang Setelah Video Selesai Diputar */
+        .curtain-video-container.fade-out {
+            opacity: 0;
             visibility: hidden;
+            pointer-events: none;
+        }
+
+        .curtain-video-container.fade-out .click-prompt {
+            opacity: 0 !important;
         }
 
         /* ==========================================================================
-           3. CELESTIAL CONTENT LAYER (TERSEMBUNYI DI AWAL)
+           3. CELESTIAL CONTENT LAYER
            ========================================================================== */
         .content-layer {
             width: 100%;
@@ -146,19 +105,19 @@
             background-size: 4px 4px;
             position: relative;
             
-            /* Sembunyikan isi teks sebelum diklik */
+            /* Animasi muncul perlahan dari balik video */
             opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 2s ease 0.4s, transform 2s ease 0.4s;
+            transform: scale(0.96);
+            transition: opacity 1.5s ease 0.2s, transform 1.5s ease 0.2s;
         }
 
-        /* Munculkan konten saat tirai dibuka */
-        .curtain-wrapper.opened + .content-layer {
+        /* Muncul ketika gorden memudar */
+        .curtain-video-container.fade-out + .content-layer {
             opacity: 1;
             transform: scale(1);
         }
 
-        /* Bingkai Tirai Dekoratif Samping di Dalam */
+        /* Ornamen Bingkai Samping Gorden */
         .side-drape-mock {
             position: absolute;
             top: 0;
@@ -171,114 +130,40 @@
         .side-drape-left { left: 0; border-radius: 0 15px 15px 0; box-shadow: 2px 0 10px rgba(0,0,0,0.15); }
         .side-drape-right { right: 0; border-radius: 15px 0 0 15px; box-shadow: -2px 0 10px rgba(0,0,0,0.15); }
 
-        /* --- ELEMEN GRAFIS CELESTIAL --- */
-        .celestial-graphics {
-            margin-top: 100px;
-            position: relative;
-            width: 200px;
-            height: 160px;
-            z-index: 2;
-        }
-
-        .celestial-svg {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
-        }
-
-        /* --- TEKS UNDANGAN --- */
-        .text-section {
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 1;
-        }
-
-        .main-invite {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
-            color: #1a237e;
-            font-weight: bold;
-            margin-bottom: 5px;
-            transform: rotate(-1deg);
-        }
-
-        .star-divider {
-            color: #e5a93b;
-            font-size: 1.5rem;
-            margin: 5px 0;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-
-        .description-text {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 2.2rem;
-            color: #0d1b2a;
-            line-height: 1.2;
-            max-width: 320px;
-            font-weight: 600;
-        }
-
-        .rsvp-section {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.3rem;
-            color: #1a237e;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        /* --- PIALA MEDIEVAL (CHALICES) --- */
-        .chalice-container {
-            position: absolute;
-            bottom: 40px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 45px;
-            z-index: 2;
-        }
-
-        .chalice {
-            width: 75px;
-            height: 90px;
-            filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.15));
-        }
-        
+        /* Graphics, Text & Chalices */
+        .celestial-graphics { margin-top: 100px; position: relative; width: 200px; height: 160px; z-index: 2; }
+        .celestial-svg { width: 100%; height: 100%; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1)); }
+        .text-section { z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; }
+        .main-invite { font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: #1a237e; font-weight: bold; margin-bottom: 5px; transform: rotate(-1deg); }
+        .star-divider { color: #e5a93b; font-size: 1.5rem; margin: 5px 0; animation: twinkle 3s infinite ease-in-out; }
+        .description-text { font-family: 'Pinyon Script', cursive; font-size: 2.2rem; color: #0d1b2a; line-height: 1.2; max-width: 320px; font-weight: 600; }
+        .rsvp-section { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: #1a237e; font-weight: bold; margin-top: 15px; }
+        .chalice-container { position: absolute; bottom: 40px; width: 100%; display: flex; justify-content: space-between; padding: 0 45px; z-index: 2; }
+        .chalice { width: 75px; height: 90px; filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.15)); }
         .chalice-left { transform: rotate(-15deg); }
         .chalice-right { transform: rotate(15deg); }
 
-        /* ==========================================================================
-           4. ANIMASI UTAS
-           ========================================================================== */
-        @keyframes bounce {
-            0%, 100% { transform: translate(-50%, -45%); opacity: 0.8; }
-            50% { transform: translate(-50%, -55%); opacity: 1; }
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.5; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.1); }
-        }
+        @keyframes bounce { 0%, 100% { transform: translate(-50%, -45%); opacity: 0.8; } 50% { transform: translate(-50%, -55%); opacity: 1; } }
+        @keyframes twinkle { 0%, 100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.1); } }
     </style>
 </head>
 <body>
 
     <div class="card-container">
         
-        <div class="curtain-wrapper" id="curtainBtn" onclick="toggleCurtain()">
-            <div class="curtain-top-valance"></div>
-            <div class="curtain-panel curtain-left"></div>
-            <div class="curtain-panel curtain-right"></div>
+        <div class="curtain-video-container" id="curtainVideoWrapper" onclick="startCurtainVideo()">
+            <video id="bgVideo" playsinline muted>
+                <source src="tirai-buka.mp4" type="video/mp4">
+                Browser kamu tidak mendukung tag video.
+            </video>
             
-            <div class="click-prompt">
+            <div class="click-prompt" id="promptText">
                 <p style="font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 5px;">TAP TO OPEN</p>
                 <span style="font-size: 1.8rem;">✦</span>
             </div>
         </div>
 
         <div class="content-layer">
-            
             <div class="side-drape-mock side-drape-left"></div>
             <div class="side-drape-mock side-drape-right"></div>
 
@@ -335,19 +220,35 @@
                     <path d="M52,11 C58,-5 64,12 68,15 C62,22 52,18 52,11 Z" fill="#b22222"/>
                 </svg>
             </div>
-
         </div>
     </div>
 
     <script>
-        function toggleCurtain() {
-            const curtain = document.getElementById('curtainBtn');
+        const video = document.getElementById('bgVideo');
+        const wrapper = document.getElementById('curtainVideoWrapper');
+        const promptText = document.getElementById('promptText');
+
+        // Memastikan video langsung memuat frame pertama (tirai tertutup) saat web dibuka
+        video.addEventListener('loadeddata', () => {
+            video.pause();
+            video.currentTime = 0; 
+        });
+
+        function startCurtainVideo() {
+            // Sembunyikan tulisan 'TAP TO OPEN' seketika saat diklik
+            promptText.style.opacity = '0';
             
-            // Mengaktifkan class 'opened' untuk mentrigger transisi tirai dan menghapus tulisan petunjuk
-            curtain.classList.add('opened');
+            // Putar video tirai terbuka
+            video.play();
             
-            // Mengunci fungsi klik agar pengguna bisa berinteraksi penuh dengan kartu di bawahnya
-            curtain.style.pointerEvents = 'none';
+            // Kunci klik agar tidak terjadi spam klik selama video berputar
+            wrapper.style.pointerEvents = 'none';
+
+            // Mendeteksi otomatis ketika durasi video MP4 kamu selesai diputar
+            video.onended = function() {
+                // Berikan kelas fade-out agar video menghilang halus dan memperlihatkan ucapan
+                wrapper.classList.add('fade-out');
+            };
         }
     </script>
 </body>
