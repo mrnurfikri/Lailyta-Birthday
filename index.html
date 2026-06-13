@@ -107,22 +107,26 @@
             color: #ffd700;
             text-align: center;
             pointer-events: none;
-            transition: opacity 0.5s ease;
+            /* Transisi cepat khusus untuk menghilangkan tulisan */
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             animation: bounce 2s infinite ease-in-out;
         }
 
         /* ANIMASI KETIKA TIRAI DIBUKA */
         .curtain-wrapper.opened .curtain-left {
-            transform: translateX(-100%) scaleX(0.2); /* Menyusut ke kiri */
+            transform: translateX(-100%) scaleX(0.2); 
         }
         .curtain-wrapper.opened .curtain-right {
-            transform: translateX(100%) scaleX(0.2); /* Menyusut ke kanan */
+            transform: translateX(100%) scaleX(0.2); 
         }
         .curtain-wrapper.opened .curtain-top-valance {
-            transform: translateY(-20px); /* Sedikit naik untuk membuka ruang */
+            transform: translateY(-20px); 
         }
+        
+        /* SOLUSI KOREKSI: Tulisan langsung hilang total tanpa bekas saat class 'opened' aktif */
         .curtain-wrapper.opened .click-prompt {
-            opacity: 0;
+            opacity: 0 !important;
+            visibility: hidden;
         }
 
         /* ==========================================================================
@@ -142,13 +146,13 @@
             background-size: 4px 4px;
             position: relative;
             
-            /* KUNCI PERUBAHAN: Sembunyikan total sebelum diklik */
+            /* Sembunyikan isi teks sebelum diklik */
             opacity: 0;
             transform: scale(0.95);
-            transition: opacity 2s ease 0.5s, transform 2s ease 0.5s; /* Muncul perlahan dengan delay mendebarkan */
+            transition: opacity 2s ease 0.4s, transform 2s ease 0.4s;
         }
 
-        /* Munculkan konten saat tirai diberi kelas 'opened' */
+        /* Munculkan konten saat tirai dibuka */
         .curtain-wrapper.opened + .content-layer {
             opacity: 1;
             transform: scale(1);
@@ -167,7 +171,7 @@
         .side-drape-left { left: 0; border-radius: 0 15px 15px 0; box-shadow: 2px 0 10px rgba(0,0,0,0.15); }
         .side-drape-right { right: 0; border-radius: 15px 0 0 15px; box-shadow: -2px 0 10px rgba(0,0,0,0.15); }
 
-        /* --- ELEMEN GRAFIS ELESTIAL --- */
+        /* --- ELEMEN GRAFIS CELESTIAL --- */
         .celestial-graphics {
             margin-top: 100px;
             position: relative;
@@ -249,7 +253,7 @@
            4. ANIMASI UTAS
            ========================================================================== */
         @keyframes bounce {
-            0%, 100 prompt { transform: translate(-50%, -45%); opacity: 0.8; }
+            0%, 100% { transform: translate(-50%, -45%); opacity: 0.8; }
             50% { transform: translate(-50%, -55%); opacity: 1; }
         }
         @keyframes twinkle {
@@ -266,6 +270,7 @@
             <div class="curtain-top-valance"></div>
             <div class="curtain-panel curtain-left"></div>
             <div class="curtain-panel curtain-right"></div>
+            
             <div class="click-prompt">
                 <p style="font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 5px;">TAP TO OPEN</p>
                 <span style="font-size: 1.8rem;">✦</span>
@@ -338,10 +343,10 @@
         function toggleCurtain() {
             const curtain = document.getElementById('curtainBtn');
             
-            // Memicu animasi tirai bergeser terbuka
+            // Mengaktifkan class 'opened' untuk mentrigger transisi tirai dan menghapus tulisan petunjuk
             curtain.classList.add('opened');
             
-            // Mematikan pointer event pada tirai agar user bisa menyalin atau berinteraksi dengan teks di bawahnya
+            // Mengunci fungsi klik agar pengguna bisa berinteraksi penuh dengan kartu di bawahnya
             curtain.style.pointerEvents = 'none';
         }
     </script>
