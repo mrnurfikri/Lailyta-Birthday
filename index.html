@@ -149,7 +149,7 @@
         <!-- SECSION 1: SELAMAT ULANG TAHUN, LAILYTA -->
         <section class="bg-section-hero min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative">
             <h1 class="text-4xl md:text-6xl font-bold text-[#420C14] tracking-wide mb-6">
-                Selamat Ulang Tahun, <span class="italic text-[#C5A059]">Lailyta</span> ✨
+                Selamat Ulang Tahun, <span class="italic text-[#E2C284]">Lailyta</span> ✨
             </h1>
             <div class="h-8">
                 <p id="typing-text" class="typing-effect text-sm md:text-lg text-[#420C14] italic script-font-bold"></p>
@@ -277,7 +277,7 @@
                     <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1]/40 border border-[#0B1B3D]/10 text-[#0B1B3D] placeholder-[#0B1B3D]/30 focus:outline-none text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu disini..."></textarea>
                 </div>
                 
-                <!-- CTA DI LUAR (Teks Berubah Menjadi Putih Bersih) -->
+                <!-- CTA DI LUAR (Teks Berubah Menjadi Putih Bersih Semakna) -->
                 <button onclick="flyWish()" id="btn-submit-wish" class="mt-6 w-11/12 py-3 bg-[#0B1B3D] text-white text-xs font-serif-ornament hover:bg-[#420C14] transition-all cursor-pointer border border-[#D1D5DB]/20 shadow-xl tracking-widest rounded-none">
                     Terbangkan doamu ke langit sana ✧
                 </button>
@@ -407,7 +407,7 @@
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ audio: true })
                 .then(function(stream) {
-                    statusDiv.textContent = "🎙️ Ayo coba tiup dibawah!"; statusDiv.style.color = "#556B2F";
+                    statusDiv.textContent = "🎙️ Sensor aktif. Embuskan tiupan Anda!"; statusDiv.style.color = "#556B2F";
                     
                     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                     const analyser = audioContext.createAnalyser();
