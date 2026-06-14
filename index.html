@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sesuatu yang Klasik & Abadi untukmu ❤️</title>
     
-    <!-- Google Fonts: Playfair Display & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
-    <!-- AOS Library untuk Animasi Vintage Scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Canvas Confetti untuk Efek Meriah -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
@@ -58,25 +54,19 @@
 </head>
 <body class="vintage-paper min-h-screen overflow-x-hidden selection:bg-pink-200 selection:text-maroon">
 
-    <!-- AUDIO BACKSOUND (Menggunakan Link Pihak Ketiga Lagu Enchanted - Taylor Swift) -->
-   <audio id="bgm" src="enchanted.mp3" loop></audio>
+    <audio id="bgm" src="enchanted.mp3" loop></audio>
 
-    <!-- TOMBOL MUTE / UNMUTE FLOATING (Disembunyikan di awal, muncul setelah surat dibuka) -->
     <button id="mute-btn" onclick="toggleMute()" class="fixed top-6 right-6 z-40 w-10 h-10 bg-[#FAF4E8]/90 border border-[#B8860B]/30 rounded-full flex items-center justify-center shadow-lg cursor-pointer text-sm hidden transition-all hover:scale-105 active:scale-95">
         🔊
     </button>
 
-    <!-- 1. GERBANG PEMBUKA: SEPENUHNYA LATAR PUTIH BERSIH, FOKUS PADA SURAT & CTA -->
     <div id="envelope-container" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white px-4">
-        <!-- Area Interaktif Klik -->
         <div onclick="startEnvelopeAnimation()" class="w-full max-w-sm text-center flex flex-col items-center justify-center cursor-pointer group">
             
-            <!-- Gambar Surat PNG (Melayang murni dengan bayangan lembut di atas latar putih) -->
             <div class="w-full bg-transparent flex justify-center mb-6 transition-transform duration-500 group-hover:scale-102">
                 <img id="vintage-envelope-img" src="surat1.png" alt="Surat Kuno" class="w-full h-auto object-contain max-h-[55vh] drop-shadow-[0_20px_35px_rgba(61,45,33,0.25)] transition-all duration-100">
             </div>
             
-            <!-- Teks Petunjuk Minimalis (CTA) -->
             <div id="env-cta" class="transition-all duration-500 text-center">
                 <p class="font-serif-ornament text-[#3D2D21]/60 text-sm tracking-[0.25em] uppercase italic font-medium group-hover:text-[#B8860B] group-hover:opacity-100">
                     Tap untuk buka surat ✉
@@ -87,16 +77,13 @@
     </div>
 
 
-    <!-- MAIN CONTENT -->
     <main class="min-h-screen">
 
-        <!-- HEADER UTAMA WEBSITE -->
         <header class="w-full py-6 px-4 border-b border-[#B8860B]/30 bg-[#FBC5C5]/10 text-center">
             <div class="text-[#B8860B] text-xl tracking-widest mb-1">❧ ⚜ ☙</div>
             <div class="text-xs uppercase tracking-[0.3em] font-semibold text-[#3D2D21]/70">Timeless Remembrance</div>
         </header>
 
-        <!-- HERO SECTION -->
         <section class="min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative bg-gradient-to-b from-[#FBC5C5]/20 to-transparent">
             <h1 class="text-4xl md:text-6xl font-bold text-[#800000] tracking-wide mb-6">
                 Selamat Ulang Tahun, <span class="italic text-[#B8860B]">Sayang</span> ✨
@@ -109,7 +96,6 @@
             </div>
         </section>
 
-        <!-- 2. TIMELINE INTERAKTIF -->
         <section class="py-20 bg-[#E0F2F1] text-[#3D2D21] relative border-y border-[#B8860B]/20">
             <div class="text-center text-[#B8860B] text-2xl mb-4">❃ ──────── ❃</div>
             <h2 class="text-3xl font-bold text-center mb-16 text-[#800000]">Lembaran Memori Kuno</h2>
@@ -117,7 +103,6 @@
             <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/40 h-[75%] top-40"></div>
             <div class="max-w-4xl mx-auto px-6 relative space-y-16">
 
-                <!-- Item Kiri -->
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1] victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold uppercase tracking-wider block mb-3 font-serif-ornament">I. Awal Mula Kisah</span>
@@ -128,7 +113,6 @@
                     <div class="w-full md:w-5/12"></div>
                 </div>
 
-                <!-- Item Kanan -->
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
                     <div class="w-full md:w-5/12 bg-[#FBC5C5]/30 p-6 rounded-none border-l-4 border-r-4 border-[#800000] shadow-md relative">
                         <div class="absolute -top-3 left-4 bg-[#E0F2F1] px-2 text-xs text-[#800000] italic font-serif-ornament">Dua Jiwa, Satu Frekuensi</div>
@@ -145,18 +129,12 @@
             <div class="text-center text-[#B8860B] text-2xl mt-12">❃ ──────── ❃</div>
         </section>
 
-        <!-- 3. FITUR TIUP LILIN VIRTUAL -->
         <section id="candle-section" class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative bg-[#FBC5C5]/10">
             <h2 class="text-2xl font-bold mb-2 text-[#800000]">Ritual Lilin Kehidupan</h2>
             <p class="text-xs text-[#556B2F] mb-12 italic max-w-xs">(Aktifkan mikrofon perangkat Anda, lalu tiup dengan ketulusan hati untuk memadamkan api)</p>
             
-            <div class="relative w-44 h-44 flex items-end justify-center">
-                <div class="w-36 h-20 bg-gradient-to-r from-[#FBC5C5] to-[#E8A5A5] border-2 border-[#B8860B] rounded-t-sm relative shadow-xl">
-                    <div class="absolute -top-2 left-0 right-0 h-3 bg-[#F7F1E1] border-b border-[#B8860B] rounded-full opacity-90 flex justify-around px-2 text-[8px] text-[#B8860B]">🌸 🌸 🌸 🌸</div>
-                    <div class="w-2.5 h-12 bg-[#800000] mx-auto absolute -top-10 left-1/2 transform -translate-x-1/2 border border-[#B8860B]/50">
-                        <div id="flame" class="w-4 h-6 bg-gradient-to-t from-red-500 to-yellow-400 rounded-full absolute -top-5 left-1/2 transform -translate-x-1/2 animate-pulse origin-bottom transition-all duration-700 shadow-[0_0_15px_rgba(234,179,8,0.8)]"></div>
-                    </div>
-                </div>
+            <div class="relative w-64 h-64 flex items-center justify-center">
+                <img id="vintage-cake-img" src="kue1.png" alt="Kue Ulang Tahun" class="w-full h-auto object-contain drop-shadow-[0_15px_30px_rgba(61,45,33,0.2)] cursor-pointer">
             </div>
 
             <div id="candle-status" class="mt-8 px-4 py-1.5 bg-[#3D2D21]/5 border border-[#3D2D21]/10 text-xs tracking-widest text-[#3D2D21]/70 uppercase">
@@ -164,10 +142,8 @@
             </div>
         </section>
 
-        <!-- 4. TULIS WISH & TERBANG KE LANGIT -->
         <section id="wish-section" class="min-h-screen flex flex-col items-center justify-center text-center px-4 hidden relative overflow-hidden bg-gradient-to-b from-transparent to-[#FBC5C5]/20">
             
-            <!-- Kotak Surat Kuno -->
             <div class="max-w-md w-full bg-[#F7F1E1] victorian-border shadow-2xl transition-all duration-1000 z-10" id="wish-box">
                 <h2 class="text-xl font-bold mb-2 text-[#800000]">Manifestasi Harapan 📜</h2>
                 <p class="text-xs text-[#556B2F] mb-6 italic">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
@@ -179,7 +155,6 @@
                 </button>
             </div>
 
-            <!-- POPUP CLIMAX HASIL TULISAN WISH -->
             <div id="popup-message" class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-700 px-4">
                 <div class="bg-[#F7F1E1] victorian-border max-w-sm w-full text-center shadow-2xl p-8 relative scale-90 transition-transform duration-700" id="popup-card">
                     <span class="text-[#B8860B] text-2xl block mb-2">✧ ✨ ✧</span>
@@ -198,7 +173,6 @@
             </div>
         </section>
 
-        <!-- FOOTER ELEGAN -->
         <footer class="w-full py-8 text-center text-xs tracking-wider text-[#3D2D21]/50 border-t border-[#B8860B]/20 bg-[#F7F1E1]">
             <div class="mb-2">⚜</div>
             <p>© 2026 • Dibuat dengan Penuh Ketulusan & Keanggunan Abadi</p>
@@ -206,7 +180,6 @@
 
     </main>
 
-    <!-- AOS (Animate on Scroll) Javascript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1200, once: true });
@@ -214,77 +187,60 @@
         const bgm = document.getElementById('bgm');
         const typingText = document.getElementById('typing-text');
         const muteBtn = document.getElementById('mute-btn');
+        const cakeImgElement = document.getElementById('vintage-cake-img');
         
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let cakeInterval = null; // Menyimpan id interval loop kue
+        let isBlown = false;     // Status apakah lilin sudah ditiup
+
         const phrases = [
             "Waktu berganti, namun pesonamu tetap abadi...",
             "Di hari istimewa ini, izinkan memori menari...",
             "Sebab bagiku, kamu adalah keanggunan yang konstan."
         ];
         
-        const envelopeFrames = [
-            "surat1.png", 
-            "surat2.png", 
-            "surat3.png", 
-            "surat4.png", 
-            "surat5.png", 
-            "surat6.png"  
-        ];
+        // PRELOADING URUTAN FOTO SURAT (1-6)
+        const envelopeFrames = ["surat1.png", "surat2.png", "surat3.png", "surat4.png", "surat5.png", "surat6.png"];
+        envelopeFrames.forEach(f => { const img = new Image(); img.src = f; });
 
-        // PRELOADING FOTO
-        envelopeFrames.forEach((frame) => {
+        // BARU: DAFTAR KESELURUHAN 12 FRAME FOTO KUE PNG (PRELOADING)
+        const cakeFrames = [];
+        for (let i = 1; i <= 12; i++) {
+            cakeFrames.push(`kue${i}.png`);
             const img = new Image();
-            img.src = frame;
-        });
-
-        // 1. BARU: LOGIKA FITUR MUTE / UNMUTE AUDIO
-        function toggleMute() {
-            if (bgm.muted) {
-                bgm.muted = false;
-                muteBtn.textContent = "🔊";
-            } else {
-                bgm.muted = true;
-                muteBtn.textContent = "🔇";
-            }
+            img.src = `kue${i}.png`; // Mengunduh di awal agar tidak patah saat transisi ditiup
         }
 
-        // ANIMASI STOP-MOTION IMAGE SWAP
+        function toggleMute() {
+            if (bgm.muted) { bgm.muted = false; muteBtn.textContent = "🔊"; } 
+            else { bgm.muted = true; muteBtn.textContent = "🔇"; }
+        }
+
+        // ANIMASI SURAT OPENING
         function startEnvelopeAnimation() {
             const imgElement = document.getElementById('vintage-envelope-img');
             const ctaText = document.getElementById('env-cta');
             
-            ctaText.style.transition = 'opacity 0.3s ease-out';
-            ctaText.style.opacity = '0';
+            bgm.play().then(() => { muteBtn.classList.remove('hidden'); })
+            .catch(e => { muteBtn.classList.remove('hidden'); muteBtn.textContent = "🔇"; bgm.muted = true; });
 
+            ctaText.style.transition = 'opacity 0.3s ease-out'; ctaText.style.opacity = '0';
             let currentFrame = 0;
             
             const animationInterval = setInterval(() => {
                 currentFrame++;
-                
                 if (currentFrame < envelopeFrames.length) {
                     imgElement.src = envelopeFrames[currentFrame];
                 } else {
                     clearInterval(animationInterval);
-                    
                     setTimeout(() => {
                         const container = document.getElementById('envelope-container');
-                        container.style.transition = 'opacity 0.8s ease-out';
-                        container.style.opacity = '0';
-                        
-                        // Mainkan Lagu Enchanted
-                        bgm.play().then(() => {
-                            // Munculkan tombol Mute setelah musik berhasil berjalan
-                            muteBtn.classList.remove('hidden');
-                        }).catch(e => {
-                            console.log("Audio play blocked by browser.");
-                            // Jika diblokir sistem browser, tetap munculkan tombol agar user bisa un-mute manual
-                            muteBtn.classList.remove('hidden');
-                            muteBtn.textContent = "🔇";
-                            bgm.muted = true;
-                        });
-
+                        container.style.transition = 'opacity 0.8s ease-out'; container.style.opacity = '0';
                         setTimeout(() => {
                             container.classList.add('hidden');
                             startTypingEffect();
+                            startCakeLoopAnimation(); // Jalankan Loop Api Lilin Menyala (Frame 1-8)
                             initMicrophone();
                         }, 800);
                     }, 600);
@@ -292,46 +248,45 @@
             }, 200); 
         }
 
-        // Efek Ketikan Teks Kuno
-        let phraseIdx = 0;
-        let charIdx = 0;
         function startTypingEffect() {
             if (charIdx < phrases[phraseIdx].length) {
-                typingText.textContent += phrases[phraseIdx].charAt(charIdx);
-                charIdx++;
+                typingText.textContent += phrases[phraseIdx].charAt(charIdx); charIdx++;
                 setTimeout(startTypingEffect, 80);
             } else {
-                setTimeout(() => {
-                    typingText.textContent = '';
-                    charIdx = 0;
-                    phraseIdx = (phraseIdx + 1) % phrases.length;
-                    startTypingEffect();
-                }, 3000);
+                setTimeout(() => { typingText.textContent = ''; charIdx = 0; phraseIdx = (phraseIdx + 1) % phrases.length; startTypingEffect(); }, 3000);
             }
         }
 
-        // Sensor Tiupan Lilin (Microphone)
+        // 2. BARU: ANIMASI LOOP FRAME 1-8 (LILIN MENYALA SEBELUM DITIUP)
+        function startCakeLoopAnimation() {
+            let currentLoopFrame = 0;
+            // Mengganti gambar setiap 150ms agar efek goyangan api terkesan halus & hidup
+            cakeInterval = setInterval(() => {
+                if (!isBlown) {
+                    currentLoopFrame = (currentLoopFrame + 1) % 8; // Berputar konstan di indeks 0 sampai 7 (kue1.png - kue8.png)
+                    cakeImgElement.src = cakeFrames[currentLoopFrame];
+                }
+            }, 150);
+        }
+
+        // SENSOR MIKROFON (TIUP LILIN)
         function initMicrophone() {
             const statusDiv = document.getElementById('candle-status');
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ audio: true })
                 .then(function(stream) {
-                    statusDiv.textContent = "🎙️ Sensor aktif. Embuskan tiupan Anda!";
-                    statusDiv.style.color = "#556B2F";
+                    statusDiv.textContent = "🎙️ Sensor aktif. Embuskan tiupan Anda!"; statusDiv.style.color = "#556B2F";
                     
                     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                     const analyser = audioContext.createAnalyser();
                     const microphone = audioContext.createMediaStreamSource(stream);
                     const javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
 
-                    analyser.smoothingTimeConstant = 0.75;
-                    analyser.fftSize = 512;
-
-                    microphone.connect(analyser);
-                    analyser.connect(javascriptNode);
-                    javascriptNode.connect(audioContext.destination);
+                    analyser.smoothingTimeConstant = 0.75; analyser.fftSize = 512;
+                    microphone.connect(analyser); analyser.connect(javascriptNode); javascriptNode.connect(audioContext.destination);
 
                     javascriptNode.onaudioprocess = function() {
+                        if (isBlown) return;
                         const array = new Uint8Array(analyser.frequencyBinCount);
                         analyser.getByteFrequencyData(array);
                         let values = 0;
@@ -339,54 +294,62 @@
                         const average = values / array.length;
                         
                         if (average > 50) { 
-                            extinguishCandle();
+                            triggerExtinguishSequence(); // Jalankan sekuens padam (Frame 9-12)
                             stream.getTracks().forEach(track => track.stop());
                             javascriptNode.onaudioprocess = null;
                         }
                     };
                 })
                 .catch(function() {
-                    statusDiv.textContent = "⚠️ Akses ditolak. Sentuh nyala api untuk meredam.";
-                    statusDiv.style.color = "#800000";
-                    document.getElementById('flame').addEventListener('click', extinguishCandle);
+                    statusDiv.textContent = "⚠️ Akses ditolak. Sentuh kue untuk meredam lilin."; statusDiv.style.color = "#800000";
+                    cakeImgElement.addEventListener('click', triggerExtinguishSequence);
                 });
             } else {
-                document.getElementById('flame').addEventListener('click', extinguishCandle);
+                cakeImgElement.addEventListener('click', triggerExtinguishSequence);
             }
         }
 
-        function extinguishCandle() {
-            const flame = document.getElementById('flame');
-            flame.style.transform = 'scale(0) translateX(-50%)';
-            flame.style.opacity = '0';
-            document.getElementById('candle-status').textContent = "❀ Lilin Berhasil Dipadamkan ❀";
+        // 3. BARU: URUTAN ANIMASI PADAM FRAME 9-12 (SATU KALI JALAN)
+        function triggerExtinguishSequence() {
+            if (isBlown) return;
+            isBlown = true;
+            clearInterval(cakeInterval); // Hentikan loop menyala (Frame 1-8) instan
             
-            confetti({ particleCount: 120, spread: 70, colors: ['#B8860B', '#FBC5C5', '#800000'], origin: { y: 0.65 } });
+            let fireFrame = 8; // Memulai dari indeks ke-8 (kue9.png)
+            
+            // Putar sekuens padam sekali jalan sampai frame 12
+            const extinguishInterval = setInterval(() => {
+                if (fireFrame < 12) {
+                    cakeImgElement.src = cakeFrames[fireFrame];
+                    fireFrame++;
+                } else {
+                    clearInterval(extinguishInterval);
+                    document.getElementById('candle-status').textContent = "❀ Lilin Berhasil Dipadamkan ❀";
+                    
+                    // Efek kembang api meriah
+                    confetti({ particleCount: 120, spread: 70, colors: ['#B8860B', '#FBC5C5', '#800000'], origin: { y: 0.65 } });
 
-            setTimeout(() => {
-                const wishSec = document.getElementById('wish-section');
-                wishSec.classList.remove('hidden');
-                wishSec.scrollIntoView({ behavior: 'smooth' });
-            }, 2000);
+                    // Gulir otomatis menuju area input teks doa keinginan
+                    setTimeout(() => {
+                        const wishSec = document.getElementById('wish-section');
+                        wishSec.classList.remove('hidden');
+                        wishSec.scrollIntoView({ behavior: 'smooth' });
+                    }, 2000);
+                }
+            }, 200); // Durasi transisi padam tiap frame (200ms)
         }
 
-        // Menerbangkan Wish & Memunculkan Popup Hasil Doa
+        // MENERBANGKAN WISH & POPUP CARD
         function flyWish() {
             const txt = document.getElementById('wish-input').value;
-            if(!txt.trim()) {
-                alert("Mohon goreskan impian Anda terlebih dahulu pada kertas surat.");
-                return;
-            }
+            if(!txt.trim()) { alert("Mohon goreskan impian Anda terlebih dahulu pada kertas surat."); return; }
 
             document.getElementById('duplicated-wish').textContent = `"${txt}"`;
             const wishBox = document.getElementById('wish-box');
-            
-            wishBox.style.transform = 'translateY(-140vh) scale(0.1) rotate(-15deg)';
-            wishBox.style.opacity = '0';
+            wishBox.style.transform = 'translateY(-140vh) scale(0.1) rotate(-15deg)'; wishBox.style.opacity = '0';
 
             setTimeout(() => {
                 wishBox.classList.add('hidden');
-                
                 let end = Date.now() + (2 * 1000);
                 (function frame() {
                     confetti({ particleCount: 2, angle: 60, spread: 45, origin: { x: 0 }, colors: ['#B8860B', '#FBC5C5'] });
@@ -396,13 +359,11 @@
 
                 const popupMessage = document.getElementById('popup-message');
                 popupMessage.classList.remove('hidden');
-                
                 setTimeout(() => {
                     popupMessage.classList.remove('opacity-0');
                     document.getElementById('popup-card').classList.remove('scale-90');
                     document.getElementById('popup-card').classList.add('scale-100');
                 }, 100);
-
             }, 1100);
         }
     </script>
