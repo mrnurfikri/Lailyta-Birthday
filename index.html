@@ -15,50 +15,49 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        /* Konfigurasi Font Berdasarkan Request */
         h1, h2, h3, h4, .font-serif-ornament {
             font-family: 'Playfair Display', serif;
         }
         body, p, textarea, button {
             font-family: 'Montserrat', sans-serif;
-            background-color: #F7F1E1; /* Latar Belakang Utama Kuno */
-            color: #3D2D21; /* Teks Cokelat Tua */
+            background-color: #F7F1E1; 
+            color: #3D2D21; 
         }
-        
         html { scroll-behavior: smooth; }
 
-        /* Tekstur Kertas Kuno Samar (Linen/Vintage Paper Effect) */
+        /* Tekstur Kertas Kuno */
         .vintage-paper {
             background-color: #F7F1E1;
             background-image: radial-gradient(rgba(61, 45, 33, 0.03) 1px, transparent 0);
             background-size: 24px 24px;
         }
 
-        /* Bingkai Ornamen Seni Art Nouveau / Victorian */
+        /* Bingkai Ornamen Victorian */
         .victorian-border {
-            border: 4px double #B8860B; /* Emas Antik */
+            border: 4px double #B8860B;
             outline: 1px solid #B8860B;
             outline-offset: -8px;
             padding: 2rem;
             position: relative;
         }
-        /* Sudut Ornaments Sulur */
-        .victorian-border::before {
-            content: "❦";
-            position: absolute;
-            top: 2px;
-            left: 5px;
-            color: #B8860B;
-            font-size: 1.2rem;
+        .victorian-border::before { content: "❦"; position: absolute; top: 2px; left: 5px; color: #B8860B; font-size: 1.2rem; }
+        .victorian-border::after { content: "❦"; position: absolute; bottom: 2px; right: 5px; color: #B8860B; font-size: 1.2rem; transform: rotate(180deg); }
+
+        /* ANIMASI BARU: Tali Lepas & Sampul Terbuka */
+        .string-line {
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
         }
-        .victorian-border::after {
-            content: "❦";
-            position: absolute;
-            bottom: 2px;
-            right: 5px;
-            color: #B8860B;
-            font-size: 1.2rem;
-            transform: rotate(180deg);
+        .string-untied {
+            transform: scaleY(0) translateY(-50px);
+            opacity: 0;
+        }
+        .envelope-flap {
+            transition: transform 1.2s ease-in-out;
+            transform-origin: top;
+        }
+        .envelope-open {
+            transform: rotateX(185deg);
         }
 
         /* Efek Ketikan Teks */
@@ -74,22 +73,37 @@
 
     <audio id="bgm" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
 
-    <div id="curtain-container" class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden">
-        <div id="curtain-left" class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#FBC5C5] to-[#F3A3A3] transition-transform duration-1500 ease-in-out border-r-4 border-[#B8860B]"></div>
-        <div id="curtain-right" class="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#FBC5C5] to-[#F3A3A3] transition-transform duration-1500 ease-in-out border-l-4 border-[#B8860B]"></div>
-        
-        <div id="gate-content" class="relative z-10 text-center scale-100 transition-all duration-700 bg-[#F7F1E1] p-8 md:p-12 rounded-xl victorian-border shadow-2xl max-w-sm mx-4">
-            <span class="text-[#800000] block text-xl mb-2">❦</span>
-            <p class="text-[#3D2D21] text-xs tracking-widest uppercase mb-6 font-semibold">Sebuah Surat Klasik Yang Abadi</p>
-            <button onclick="openCurtain()" class="px-6 py-3 bg-gradient-to-b from-[#B8860B] to-[#966F03] text-[#F7F1E1] rounded-sm font-serif-ornament uppercase tracking-wider text-sm shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer border border-[#3D2D21]/20">
-                Buka Segel Surat ❤️
-            </button>
+    <div id="envelope-container" class="fixed inset-0 z-50 flex items-center justify-center bg-[#3D2D21]/40 backdrop-blur-md px-4">
+        <div class="w-full max-w-md bg-[#FAF4E8] rounded-sm border-2 border-[#B8860B] shadow-2xl overflow-hidden relative pt-12 pb-8 px-6 text-center">
+            
+            <div id="env-flap" class="envelope-flap absolute top-0 left-0 right-0 h-12 bg-[#FBC5C5] border-b border-[#B8860B] z-20"></div>
+            
+            <div id="string-group" class="relative z-30 flex flex-col items-center justify-center my-6">
+                <div class="w-6 h-6 rounded-full bg-[#800000] border border-[#B8860B] flex items-center justify-center shadow-md">
+                    <div class="w-2 h-2 rounded-full bg-[#B8860B]"></div>
+                </div>
+                <div id="string-vertical" class="string-line w-0.5 h-16 bg-[#B8860B] my-1 shadow-sm"></div>
+                <div class="w-6 h-6 rounded-full bg-[#800000] border border-[#B8860B] flex items-center justify-center shadow-md">
+                    <div class="w-2 h-2 rounded-full bg-[#B8860B]"></div>
+                </div>
+            </div>
+
+            <div id="env-text" class="transition-opacity duration-500">
+                <span class="text-[#800000] block text-lg mb-1">❦</span>
+                <h3 class="font-serif-ornament text-[#3D2D21] text-lg font-bold mb-1">Dokumen Rahasia Kuno</h3>
+                <p class="text-[10px] text-[#556B2F] tracking-widest uppercase font-semibold mb-6">Tersegel Khusus Untuk Orang Spesial</p>
+                
+                <button onclick="untieEnvelope()" class="px-5 py-2.5 bg-gradient-to-b from-[#B8860B] to-[#966F03] text-[#F7F1E1] rounded-none font-serif-ornament uppercase tracking-widest text-xs shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer border border-[#3D2D21]/20">
+                    Lepas Tali & Buka ✉
+                </button>
+            </div>
         </div>
     </div>
 
+
     <main class="min-h-screen">
 
-        <header class="w-full py-6 px-4 border-b border-[#B8860B]/30 bg-[#FBC5C5]/10 text-center relative">
+        <header class="w-full py-6 px-4 border-b border-[#B8860B]/30 bg-[#FBC5C5]/10 text-center">
             <div class="text-[#B8860B] text-xl tracking-widest mb-1">❧ ⚜ ☙</div>
             <div class="text-xs uppercase tracking-[0.3em] font-semibold text-[#3D2D21]/70">Timeless Remembrance</div>
         </header>
@@ -99,9 +113,8 @@
                 Selamat Ulang Tahun, <span class="italic text-[#B8860B]">Sayang</span> ✨
             </h1>
             <div class="h-8">
-                <p id="typing-text" class="typing-effect text-md md:text-xl text-[#3D2D21] italic font-light"></p>
+                <p id="typing-text" class="typing-effect text-sm md:text-lg text-[#3D2D21] italic font-light"></p>
             </div>
-            
             <div class="absolute bottom-12 animate-bounce text-[#B8860B] text-xs tracking-widest uppercase">
                 Gulir ke bawah perlahan <br> ⏳
             </div>
@@ -117,7 +130,7 @@
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1] victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold uppercase tracking-wider block mb-3 font-serif-ornament">I. Awal Mula Kisah</span>
-                        <img src="https://picsum.photos/400/250?random=1" alt="Memori 1" class="w-full h-44 object-cover sepia hover:sepia-0 transition-all duration-700 border border-[#3D2D21]/20">
+                        <img src="https://picsum.photos/400/250?random=1" alt="Memori 1" class="w-full h-44 object-cover sepia border border-[#3D2D21]/20">
                         <p class="text-xs text-[#3D2D21]/90 mt-4 leading-relaxed italic">"Waktu seolah berhenti saat pertama kali tatap itu beradu. Di situ, lembar pertama kisah kita resmi ditulis."</p>
                     </div>
                     <div class="hidden md:block w-2/12"></div>
@@ -131,16 +144,6 @@
                             <p class="text-right text-[#800000] italic">"Kemana kita akan melangkah esok hari?..."</p>
                             <p class="text-left text-[#556B2F] font-semibold">"Ke manapun tak masalah, asal genggaman jemarimu tak pernah lepas."</p>
                         </div>
-                    </div>
-                    <div class="hidden md:block w-2/12"></div>
-                    <div class="w-full md:w-5/12"></div>
-                </div>
-
-                <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-up">
-                    <div class="w-full md:w-5/12 bg-[#F7F1E1] victorian-border shadow-xl">
-                        <span class="text-xs text-[#556B2F] font-semibold uppercase tracking-wider block mb-3 font-serif-ornament">II. Hingga Hari Abadi</span>
-                        <img src="https://picsum.photos/400/250?random=2" alt="Memori 2" class="w-full h-44 object-cover sepia hover:sepia-0 transition-all duration-700 border border-[#3D2D21]/20">
-                        <p class="text-xs text-[#3D2D21]/90 mt-4 leading-relaxed italic">"Terima kasih telah menjadi keanggunan yang meredam semua riuh di duniaku. Selamat bertambah usia, manusia favoritku."</p>
                     </div>
                     <div class="hidden md:block w-2/12"></div>
                     <div class="w-full md:w-5/12"></div>
@@ -170,7 +173,7 @@
 
         <section id="wish-section" class="min-h-screen flex flex-col items-center justify-center text-center px-4 hidden relative overflow-hidden bg-gradient-to-b from-transparent to-[#FBC5C5]/20">
             
-            <div class="max-w-md w-full bg-[#F7F1E1] victorian-border shadow-2xl transition-all duration-1000" id="wish-box">
+            <div class="max-w-md w-full bg-[#F7F1E1] victorian-border shadow-2xl transition-all duration-1000 z-10" id="wish-box">
                 <h2 class="text-xl font-bold mb-2 text-[#800000]">Manifestasi Harapan 📜</h2>
                 <p class="text-xs text-[#556B2F] mb-6 italic">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
                 
@@ -180,15 +183,22 @@
                     Terbangkan Harapan Ke Angkasa ✧
                 </button>
             </div>
-            
-            <div id="final-message" class="absolute hidden scale-50 opacity-0 transition-all duration-1000 text-center px-4">
-                <div class="text-[#B8860B] text-3xl mb-2">❦</div>
-                <h2 class="text-3xl font-bold text-[#800000] mb-4">Menuju Angkasa Raya</h2>
-                <p class="text-xs text-[#3D2D21] max-w-sm mx-auto leading-relaxed mb-8 italic">"Semua larik doa yang terucap telah meluncur tenang menembus awan. Semoga kebahagiaan selalu memeluk harimu secara utuh, selamanya."</p>
-                
-                <a href="https://wa.me/6281234567890?text=Kado%20digitalnya%20sangat%20indah%20dan%20elegan.%20Terima%20kasih%20banyak%20ya%20❤️✨" target="_blank" class="px-6 py-2.5 border border-[#3D2D21] text-xs uppercase tracking-widest bg-transparent hover:bg-[#3D2D21] hover:text-[#F7F1E1] transition-all font-semibold inline-block">
-                    Balas Surat Ini ✉
-                </a>
+
+            <div id="popup-message" class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-700 px-4">
+                <div class="bg-[#F7F1E1] victorian-border max-w-sm w-full text-center shadow-2xl p-8 relative scale-90 transition-transform duration-700" id="popup-card">
+                    <span class="text-[#B8860B] text-2xl block mb-2">✧ ✨ ✧</span>
+                    <h3 class="text-xl font-bold text-[#800000] mb-3">Harapanmu Telah Terkirim!</h3>
+                    
+                    <p id="duplicated-wish" class="text-xs text-[#3D2D21]/80 italic border-y border-[#B8860B]/20 py-3 my-4 bg-[#FBC5C5]/10 max-h-24 overflow-y-auto"></p>
+                    
+                    <p class="text-sm font-semibold text-[#556B2F] leading-relaxed mb-6 italic">
+                        "Semoga doa terbaikmu bisa dikabulkan dan didengar oleh semesta raya. Selalu bahagia ya! ❤️"
+                    </p>
+                    
+                    <a href="https://wa.me/6281234567890?text=Kado%20digitalnya%20sangat%20indah%20dan%20elegan.%20Terima%20kasih%20banyak%20ya%20❤️✨" target="_blank" class="w-full block py-2.5 border border-[#3D2D21] text-[10px] uppercase tracking-widest bg-[#3D2D21] text-[#F7F1E1] hover:bg-transparent hover:text-[#3D2D21] transition-all font-semibold">
+                        Balas Surat Ini via WA ✉
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -211,23 +221,35 @@
             "Sebab bagiku, kamu adalah keanggunan yang konstan."
         ];
         
-        // 1. Fungsi Pembuka Tirai Romantis
-        function openCurtain() {
-            document.getElementById('gate-content').classList.add('scale-0', 'opacity-0');
-            document.getElementById('curtain-left').style.transform = 'translateX(-100%)';
-            document.getElementById('curtain-right').style.transform = 'translateX(100%)';
+        // 1. BARU: Fungsi Lepas Tali & Amplop Terbuka
+        function untieEnvelope() {
+            // Animasi tali terlepas (mengecil vertikal)
+            document.getElementById('string-vertical').classList.add('string-untied');
             
-            // Jalankan Backsound Musik
-            bgm.play().catch(e => console.log("Audio Auto-play tertahan privasi browser."));
+            setTimeout(() => {
+                // Animasi penutup lipatan surat terbalik ke atas
+                document.getElementById('env-flap').classList.add('envelope-open');
+                document.getElementById('env-text').classList.add('opacity-0');
+            }, 800);
 
             setTimeout(() => {
-                document.getElementById('curtain-container').classList.add('hidden');
-                startTypingEffect();
-                initMicrophone(); // Deteksi tiupan lilin aktif
-            }, 1500);
+                // Memudarkan wadah amplop secara keseluruhan
+                const envContainer = document.getElementById('envelope-container');
+                envContainer.style.transition = 'opacity 1s ease-out';
+                envContainer.style.opacity = '0';
+                
+                // Nyalakan Lagu Musik Klasik
+                bgm.play().catch(e => console.log("Audio tertahan policy browser."));
+
+                setTimeout(() => {
+                    envContainer.classList.add('hidden');
+                    startTypingEffect();
+                    initMicrophone();
+                }, 1000);
+            }, 2000);
         }
 
-        // Efek Ketikan Mesin Tik Kuno
+        // Efek Ketikan Mesin Tik
         let phraseIdx = 0;
         let charIdx = 0;
         function startTypingEffect() {
@@ -245,15 +267,14 @@
             }
         }
 
-        // 2. Sensor Deteksi Tiupan Lilin Kuno (Web Audio API)
+        // 2. Sensor Tiupan Lilin (Microphone)
         function initMicrophone() {
             const statusDiv = document.getElementById('candle-status');
-            
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ audio: true })
                 .then(function(stream) {
                     statusDiv.textContent = "🎙️ Sensor aktif. Embuskan tiupan Anda!";
-                    statusDiv.style.color = "#556B2F"; // Hijau Sage
+                    statusDiv.style.color = "#556B2F";
                     
                     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                     const analyser = audioContext.createAnalyser();
@@ -271,42 +292,34 @@
                         const array = new Uint8Array(analyser.frequencyBinCount);
                         analyser.getByteFrequencyData(array);
                         let values = 0;
-
-                        for (let i = 0; i < array.length; i++) {
-                            values += array[i];
-                        }
+                        for (let i = 0; i < array.length; i++) { values += array[i]; }
                         const average = values / array.length;
                         
-                        // Jika desibel melebihi batas (tiupan terdeteksi)
                         if (average > 50) { 
                             extinguishCandle();
-                            stream.getTracks().forEach(track => track.stop()); // Matikan mic
+                            stream.getTracks().forEach(track => track.stop());
                             javascriptNode.onaudioprocess = null;
                         }
                     };
                 })
                 .catch(function() {
                     statusDiv.textContent = "⚠️ Akses ditolak. Sentuh nyala api untuk meredam.";
-                    statusDiv.style.color = "#800000"; // Merah Marun
+                    statusDiv.style.color = "#800000";
                     document.getElementById('flame').addEventListener('click', extinguishCandle);
                 });
             } else {
-                statusDiv.textContent = "Gunakan sentuhan langsung untuk mematikan lilin.";
                 document.getElementById('flame').addEventListener('click', extinguishCandle);
             }
         }
 
-        // Fungsi Mematikan Lilin Kuno
         function extinguishCandle() {
             const flame = document.getElementById('flame');
             flame.style.transform = 'scale(0) translateX(-50%)';
             flame.style.opacity = '0';
             document.getElementById('candle-status').textContent = "❀ Lilin Berhasil Dipadamkan ❀";
             
-            // Letupan kertas emas (Confetti Klasik)
             confetti({ particleCount: 120, spread: 70, colors: ['#B8860B', '#FBC5C5', '#800000'], origin: { y: 0.65 } });
 
-            // Gulir otomatis ke arah penulisan surat keinginan
             setTimeout(() => {
                 const wishSec = document.getElementById('wish-section');
                 wishSec.classList.remove('hidden');
@@ -314,7 +327,7 @@
             }, 2000);
         }
 
-        // 3. Efek Menerbangkan Wish Kertas Surat ke Langit Kuno
+        // 3. BARU: Efek Menerbangkan Wish & Memunculkan Popup Hasil Doa
         function flyWish() {
             const txt = document.getElementById('wish-input').value;
             if(!txt.trim()) {
@@ -322,29 +335,35 @@
                 return;
             }
 
+            // Duplikat tulisan user ke dalam popup card sebelum diterbangkan
+            document.getElementById('duplicated-wish').textContent = `"${txt}"`;
+
             const wishBox = document.getElementById('wish-box');
             
-            // Animasi kertas surat meluncur terbang ke atas langit
+            // Efek kertas surat terbang meluncur ke angkasa
             wishBox.style.transform = 'translateY(-140vh) scale(0.1) rotate(-15deg)';
             wishBox.style.opacity = '0';
 
             setTimeout(() => {
                 wishBox.classList.add('hidden');
-                const finalMsg = document.getElementById('final-message');
-                finalMsg.classList.remove('hidden');
                 
-                // Efek partikel kembang api tipis terus menerus
-                let end = Date.now() + (2.5 * 1000);
+                // Letupan kembang api berkelanjutan
+                let end = Date.now() + (2 * 1000);
                 (function frame() {
                     confetti({ particleCount: 2, angle: 60, spread: 45, origin: { x: 0 }, colors: ['#B8860B', '#FBC5C5'] });
                     confetti({ particleCount: 2, angle: 120, spread: 45, origin: { x: 1 }, colors: ['#B8860B', '#FBC5C5'] });
                     if (Date.now() < end) { requestAnimationFrame(frame); }
                 }());
 
+                // Munculkan POPUP CARD utama ke layar
+                const popupMessage = document.getElementById('popup-message');
+                popupMessage.classList.remove('hidden');
+                
                 setTimeout(() => {
-                    finalMsg.classList.remove('scale-50', 'opacity-0');
-                    finalMsg.classList.add('scale-100', 'opacity-100');
-                }, 200);
+                    popupMessage.classList.remove('opacity-0');
+                    document.getElementById('popup-card').classList.remove('scale-90');
+                    document.getElementById('popup-card').classList.add('scale-100');
+                }, 100);
 
             }, 1100);
         }
