@@ -5,36 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sesuatu yang Klasik & Abadi untukmu ❤️</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
-    <!-- AOS Library untuk Animasi Vintage Scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Canvas Confetti untuk Efek Meriah -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        /* 1. DEKLARASI FONT KUSTOM FORMAT .WOFF JALUR RELATIF GITHUB */
+        /* 1. PERBAIKAN DEKLARASI FONT KUSTOM FORMAT .WOFF2 JALUR RELATIF GITHUB */
         @font-face {
             font-family: 'Rustic Roadway';
-            src: url('RusticRoadwayPersonaluse.woff') format('woff');
+            src: url('RusticRoadwayPersonaluse.woff2') format('woff2');
             font-weight: bold;
             font-style: normal;
+            font-display: swap;
         }
 
         @font-face {
             font-family: 'Wasted Vindey';
-            src: url('WastedVindeyRegular.woff') format('woff');
+            src: url('WastedVindeyRegular.woff2') format('woff2');
             font-weight: normal;
             font-style: normal;
+            font-display: swap;
         }
 
-        /* 2. PENERAPAN FONT PADA ELEMEN WEBSITE */
+        /* 2. PENERAPAN FONT PADA ELEMEN WEBSITE DENGAN FALLBACK */
         h1, h2, h3, h4, .font-serif-ornament {
-            font-family: 'Rustic Roadway', serif;
+            font-family: 'Rustic Roadway', Georgia, serif;
         }
         body, p, textarea, button {
-            font-family: 'Wasted Vindey', sans-serif;
+            font-family: 'Wasted Vindey', Arial, sans-serif;
             background-color: #F7F1E1; 
             color: #3D2D21; 
         }
@@ -69,25 +68,19 @@
 </head>
 <body class="vintage-paper min-h-screen overflow-x-hidden selection:bg-pink-200 selection:text-maroon">
 
-    <!-- AUDIO BACKSOUND (Letakkan file enchanted.mp3 satu folder dengan file ini di GitHub Anda) -->
     <audio id="bgm" src="enchanted.mp3" loop></audio>
 
-    <!-- TOMBOL MUTE / UNMUTE FLOATING -->
     <button id="mute-btn" onclick="toggleMute()" class="fixed top-6 right-6 z-40 w-10 h-10 bg-[#FAF4E8]/90 border border-[#B8860B]/30 rounded-full flex items-center justify-center shadow-lg cursor-pointer text-sm hidden transition-all hover:scale-105 active:scale-95">
         🔊
     </button>
 
-    <!-- 1. GERBANG PEMBUKA: SEPENUHNYA LATAR PUTIH BERSIH -->
     <div id="envelope-container" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white px-4">
-        <!-- Area Interaktif Klik -->
         <div onclick="startEnvelopeAnimation()" class="w-full max-w-sm text-center flex flex-col items-center justify-center cursor-pointer group">
             
-            <!-- Gambar Surat PNG -->
             <div class="w-full bg-transparent flex justify-center mb-6 transition-transform duration-500 group-hover:scale-102">
                 <img id="vintage-envelope-img" src="surat1.png" alt="Surat Kuno" class="w-full h-auto object-contain max-h-[55vh] drop-shadow-[0_20px_35px_rgba(61,45,33,0.25)] transition-all duration-100">
             </div>
             
-            <!-- Teks Petunjuk Minimalis (CTA) - [Auto Capslock Bersih] -->
             <div id="env-cta" class="transition-all duration-500 text-center">
                 <p class="font-serif-ornament text-[#3D2D21]/60 text-base font-medium group-hover:text-[#B8860B] group-hover:opacity-100">
                     Tap untuk buka surat ✉
@@ -98,16 +91,13 @@
     </div>
 
 
-    <!-- MAIN CONTENT -->
     <main class="min-h-screen">
 
-        <!-- HEADER UTAMA WEBSITE -->
         <header class="w-full py-6 px-4 border-b border-[#B8860B]/30 bg-[#FBC5C5]/10 text-center">
             <div class="text-[#B8860B] text-xl tracking-widest mb-1">❧ ⚜ ☙</div>
             <div class="text-xs font-semibold text-[#3D2D21]/70">Timeless Remembrance</div>
         </header>
 
-        <!-- HERO SECTION -->
         <section class="min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative bg-gradient-to-b from-[#FBC5C5]/20 to-transparent">
             <h1 class="text-4xl md:text-6xl font-bold text-[#800000] tracking-wide mb-6">
                 Selamat Ulang Tahun, <span class="italic text-[#B8860B]">Sayang</span> ✨
@@ -115,13 +105,11 @@
             <div class="h-8">
                 <p id="typing-text" class="typing-effect text-sm md:text-lg text-[#3D2D21] italic font-light"></p>
             </div>
-            <!-- [Auto Capslock Bersih] -->
             <div class="absolute bottom-12 animate-bounce text-[#B8860B] text-xs">
                 Gulir ke bawah perlahan ya... <br> ⏳
             </div>
         </section>
 
-        <!-- 2. TIMELINE INTERAKTIF -->
         <section class="py-20 bg-[#E0F2F1] text-[#3D2D21] relative border-y border-[#B8860B]/20">
             <div class="text-center text-[#B8860B] text-2xl mb-4">❃ ──────── ❃</div>
             <h2 class="text-3xl font-bold text-center mb-16 text-[#800000]">Lembaran Memori Kuno</h2>
@@ -129,10 +117,8 @@
             <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/40 h-[75%] top-40"></div>
             <div class="max-w-4xl mx-auto px-6 relative space-y-16">
 
-                <!-- Item Kiri -->
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1] victorian-border shadow-xl">
-                        <!-- [Auto Capslock Bersih] -->
                         <span class="text-xs text-[#556B2F] font-semibold block mb-3 font-serif-ornament">I. Awal Mula Kisah</span>
                         <img src="https://picsum.photos/400/250?random=1" alt="Memori 1" class="w-full h-44 object-cover sepia border border-[#3D2D21]/20">
                         <p class="text-xs text-[#3D2D21]/90 mt-4 leading-relaxed italic">"Waktu seolah berhenti saat pertama kali tatap itu beradu. Di situ, lembar pertama kisah kita resmi ditulis."</p>
@@ -141,7 +127,6 @@
                     <div class="w-full md:w-5/12"></div>
                 </div>
 
-                <!-- Item Kanan -->
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
                     <div class="w-full md:w-5/12 bg-[#FBC5C5]/30 p-6 rounded-none border-l-4 border-r-4 border-[#800000] shadow-md relative">
                         <div class="absolute -top-3 left-4 bg-[#E0F2F1] px-2 text-xs text-[#800000] italic font-serif-ornament">Dua Jiwa, Satu Frekuensi</div>
@@ -158,39 +143,32 @@
             <div class="text-center text-[#B8860B] text-2xl mt-12">❃ ──────── ❃</div>
         </section>
 
-        <!-- 3. FITUR KUE & LILIN STOP-MOTION -->
         <section id="candle-section" class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative bg-[#FBC5C5]/10">
             <h2 class="text-2xl font-bold mb-2 text-[#800000]">Ritual Lilin Kehidupan</h2>
             <p class="text-xs text-[#556B2F] mb-12 italic max-w-xs">(Aktifkan mikrofon perangkat Anda, lalu tiup dengan ketulusan hati untuk memadamkan api)</p>
             
-            <!-- Wadah Utama Gambar Kue Interaktif PNG -->
             <div class="relative w-64 h-64 flex items-center justify-center">
                 <img id="vintage-cake-img" src="kue1.png" alt="Kue Ulang Tahun" class="w-full h-auto object-contain drop-shadow-[0_15px_30px_rgba(61,45,33,0.2)] cursor-pointer">
             </div>
 
-            <!-- [Auto Capslock Bersih] -->
             <div id="candle-status" class="mt-8 px-4 py-1.5 bg-[#3D2D21]/5 border border-[#3D2D21]/10 text-xs text-[#3D2D21]/70">
                 Menghubungkan ke sensor udara...
             </div>
         </section>
 
-        <!-- 4. TULIS WISH & TERBANG KE LANGIT -->
         <section id="wish-section" class="min-h-screen flex flex-col items-center justify-center text-center px-4 hidden relative overflow-hidden bg-gradient-to-b from-transparent to-[#FBC5C5]/20">
             
-            <!-- Kotak Surat Kuno -->
             <div class="max-w-md w-full bg-[#F7F1E1] victorian-border shadow-2xl transition-all duration-1000 z-10" id="wish-box">
                 <h2 class="text-xl font-bold mb-2 text-[#800000]">Manifestasi Harapan 📜</h2>
                 <p class="text-xs text-[#556B2F] mb-6 italic">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
                 
                 <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1] border-2 border-dashed border-[#B8860B]/40 text-[#3D2D21] placeholder-[#3D2D21]/40 focus:outline-none focus:border-[#800000] text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
                 
-                <!-- [Auto Capslock Bersih] -->
                 <button onclick="flyWish()" class="mt-5 w-full py-3 bg-[#3D2D21] text-[#F7F1E1] text-sm font-serif-ornament hover:bg-[#800000] transition-all cursor-pointer border border-[#B8860B]">
                     Terbangkan Harapan Ke Angkasa ✧
                 </button>
             </div>
 
-            <!-- POPUP CLIMAX HASIL TULISAN WISH -->
             <div id="popup-message" class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-700 px-4">
                 <div class="bg-[#F7F1E1] victorian-border max-w-sm w-full text-center shadow-2xl p-8 relative scale-90 transition-transform duration-700" id="popup-card">
                     <span class="text-[#B8860B] text-2xl block mb-2">✧ ✨ ✧</span>
@@ -202,7 +180,6 @@
                         "Semoga doa terbaikmu bisa dikabulkan dan didengar oleh semesta raya. Selalu bahagia ya! ❤️"
                     </p>
                     
-                    <!-- [Auto Capslock Bersih] -->
                     <a href="https://wa.me/6281234567890?text=Kado%20digitalnya%20sangat%20indah%20dan%20elegan.%20Terima%20kasih%20banyak%20ya%20❤️✨" target="_blank" class="w-full block py-2.5 border border-[#3D2D21] text-xs bg-[#3D2D21] text-[#F7F1E1] hover:bg-transparent hover:text-[#3D2D21] transition-all font-semibold">
                         Balas Surat Ini via WA ✉
                     </a>
@@ -210,7 +187,6 @@
             </div>
         </section>
 
-        <!-- FOOTER ELEGAN -->
         <footer class="w-full py-8 text-center text-xs text-[#3D2D21]/50 border-t border-[#B8860B]/20 bg-[#F7F1E1]">
             <div class="mb-2">⚜</div>
             <p>© 2026 • Dibuat dengan Penuh Ketulusan & Keanggunan Abadi</p>
@@ -218,7 +194,6 @@
 
     </main>
 
-    <!-- AOS (Animate on Scroll) Javascript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1200, once: true });
