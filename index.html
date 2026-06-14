@@ -5,21 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sesuatu yang Klasik & Abadi untukmu ❤️</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
+        /* 1. DEKLARASI FONT KUSTOM JALUR RELATIF GITHUB */
+        @font-face {
+            font-family: 'Rustic Roadway';
+            src: url('RusticRoadwayPersonaluse.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Wasted Vindey';
+            src: url('WastedVindeyRegular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 2. PENERAPAN FONT PADA ELEMEN WEBSITE */
         h1, h2, h3, h4, .font-serif-ornament {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Rustic Roadway', serif;
         }
         body, p, textarea, button {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Wasted Vindey', sans-serif;
             background-color: #F7F1E1; 
             color: #3D2D21; 
         }
@@ -191,8 +203,8 @@
         
         let phraseIdx = 0;
         let charIdx = 0;
-        let cakeInterval = null; // Menyimpan id interval loop kue
-        let isBlown = false;     // Status apakah lilin sudah ditiup
+        let cakeInterval = null; 
+        let isBlown = false;     
 
         const phrases = [
             "Waktu berganti, namun pesonamu tetap abadi...",
@@ -200,16 +212,16 @@
             "Sebab bagiku, kamu adalah keanggunan yang konstan."
         ];
         
-        // PRELOADING URUTAN FOTO SURAT (1-6)
+        // SEQUENCE FOTO SURAT (1-6)
         const envelopeFrames = ["surat1.png", "surat2.png", "surat3.png", "surat4.png", "surat5.png", "surat6.png"];
         envelopeFrames.forEach(f => { const img = new Image(); img.src = f; });
 
-        // BARU: DAFTAR KESELURUHAN 12 FRAME FOTO KUE PNG (PRELOADING)
+        // SEQUENCE FOTO KUE (1-12)
         const cakeFrames = [];
         for (let i = 1; i <= 12; i++) {
             cakeFrames.push(`kue${i}.png`);
             const img = new Image();
-            img.src = `kue${i}.png`; // Mengunduh di awal agar tidak patah saat transisi ditiup
+            img.src = `kue${i}.png`; 
         }
 
         function toggleMute() {
@@ -217,11 +229,12 @@
             else { bgm.muted = true; muteBtn.textContent = "🔇"; }
         }
 
-        // ANIMASI SURAT OPENING
+        // ANIMASI SURAT OPENING + AUTOPLAY AUDIO
         function startEnvelopeAnimation() {
             const imgElement = document.getElementById('vintage-envelope-img');
             const ctaText = document.getElementById('env-cta');
             
+            // Mengaktifkan lagu Taylor Swift - Enchanted secara instan saat tap pertama dilakukan
             bgm.play().then(() => { muteBtn.classList.remove('hidden'); })
             .catch(e => { muteBtn.classList.remove('hidden'); muteBtn.textContent = "🔇"; bgm.muted = true; });
 
@@ -240,7 +253,7 @@
                         setTimeout(() => {
                             container.classList.add('hidden');
                             startTypingEffect();
-                            startCakeLoopAnimation(); // Jalankan Loop Api Lilin Menyala (Frame 1-8)
+                            startCakeLoopAnimation(); 
                             initMicrophone();
                         }, 800);
                     }, 600);
@@ -257,13 +270,12 @@
             }
         }
 
-        // 2. BARU: ANIMASI LOOP FRAME 1-8 (LILIN MENYALA SEBELUM DITIUP)
+        // ANIMASI LOOP KUE LILIN MENYALA (FRAME 1-8)
         function startCakeLoopAnimation() {
             let currentLoopFrame = 0;
-            // Mengganti gambar setiap 150ms agar efek goyangan api terkesan halus & hidup
             cakeInterval = setInterval(() => {
                 if (!isBlown) {
-                    currentLoopFrame = (currentLoopFrame + 1) % 8; // Berputar konstan di indeks 0 sampai 7 (kue1.png - kue8.png)
+                    currentLoopFrame = (currentLoopFrame + 1) % 8; 
                     cakeImgElement.src = cakeFrames[currentLoopFrame];
                 }
             }, 150);
@@ -294,7 +306,7 @@
                         const average = values / array.length;
                         
                         if (average > 50) { 
-                            triggerExtinguishSequence(); // Jalankan sekuens padam (Frame 9-12)
+                            triggerExtinguishSequence(); 
                             stream.getTracks().forEach(track => track.stop());
                             javascriptNode.onaudioprocess = null;
                         }
@@ -309,15 +321,14 @@
             }
         }
 
-        // 3. BARU: URUTAN ANIMASI PADAM FRAME 9-12 (SATU KALI JALAN)
+        // ANIMASI PADAM KUE (FRAME 9-12 ONCE)
         function triggerExtinguishSequence() {
             if (isBlown) return;
             isBlown = true;
-            clearInterval(cakeInterval); // Hentikan loop menyala (Frame 1-8) instan
+            clearInterval(cakeInterval); 
             
-            let fireFrame = 8; // Memulai dari indeks ke-8 (kue9.png)
+            let fireFrame = 8; 
             
-            // Putar sekuens padam sekali jalan sampai frame 12
             const extinguishInterval = setInterval(() => {
                 if (fireFrame < 12) {
                     cakeImgElement.src = cakeFrames[fireFrame];
@@ -326,20 +337,18 @@
                     clearInterval(extinguishInterval);
                     document.getElementById('candle-status').textContent = "❀ Lilin Berhasil Dipadamkan ❀";
                     
-                    // Efek kembang api meriah
                     confetti({ particleCount: 120, spread: 70, colors: ['#B8860B', '#FBC5C5', '#800000'], origin: { y: 0.65 } });
 
-                    // Gulir otomatis menuju area input teks doa keinginan
                     setTimeout(() => {
                         const wishSec = document.getElementById('wish-section');
                         wishSec.classList.remove('hidden');
                         wishSec.scrollIntoView({ behavior: 'smooth' });
                     }, 2000);
                 }
-            }, 200); // Durasi transisi padam tiap frame (200ms)
+            }, 200); 
         }
 
-        // MENERBANGKAN WISH & POPUP CARD
+        // MENERBANGKAN WISH & POPUP
         function flyWish() {
             const txt = document.getElementById('wish-input').value;
             if(!txt.trim()) { alert("Mohon goreskan impian Anda terlebih dahulu pada kertas surat."); return; }
