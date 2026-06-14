@@ -34,11 +34,17 @@
         }
         body, p, textarea, button {
             font-family: 'Wasted Vindey', Arial, sans-serif;
-            color: #3D2D21; 
+            color: #420C14; /* PERBAIKAN: Default teks utama disesuaikan ke Dark Burgundy */
         }
         html { scroll-behavior: smooth; }
 
-        /* 3. PENYESUAIAN BACKGROUND IMAGE (HERO = .PNG | TIMELINE, CANDLE, WISH = .JPG) */
+        /* PERBAIKAN: Mengatur ketebalan khusus semi-bold untuk jenis tulisan tangan agar tidak tenggelam */
+        .script-font-bold {
+            font-family: 'Wasted Vindey', Arial, sans-serif;
+            font-weight: 600; /* Semi-bold */
+        }
+
+        /* 3. BACKGROUND IMAGE (HERO = .PNG | TIMELINE, CANDLE, WISH = .JPG) */
         .bg-section-hero {
             background-image: url('bg_hero.png');
             background-size: cover;
@@ -116,15 +122,15 @@
 
         <header class="w-full py-6 px-4 border-b border-[#B8860B]/30 bg-white/40 backdrop-blur-sm text-center">
             <div class="text-[#B8860B] text-xl tracking-widest mb-1">❧ ⚜ ☙</div>
-            <div class="text-xs font-semibold text-[#3D2D21]/70">Timeless Remembrance</div>
+            <div class="text-xs font-semibold text-[#420C14]/70">Timeless Remembrance</div>
         </header>
 
         <section class="bg-section-hero min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative">
-            <h1 class="text-4xl md:text-6xl font-bold text-[#800000] tracking-wide mb-6">
-                Selamat Ulang Tahun, <span class="italic text-[#B8860B]">Sayang</span> ✨
+            <h1 class="text-4xl md:text-6xl font-bold text-[#420C14] tracking-wide mb-6">
+                Selamat Ulang Tahun, <span class="italic text-[#61353B]">Sayang</span> ✨
             </h1>
             <div class="h-8">
-                <p id="typing-text" class="typing-effect text-sm md:text-lg text-[#3D2D21] italic font-light"></p>
+                <p id="typing-text" class="typing-effect text-sm md:text-lg text-[#420C14] italic script-font-bold"></p>
             </div>
             <div class="absolute bottom-12 animate-bounce text-[#B8860B] text-xs">
                 Gulir ke bawah perlahan ya... <br> ⏳
@@ -133,7 +139,7 @@
 
         <section class="bg-section-timeline py-20 text-[#3D2D21] relative border-y border-[#B8860B]/20">
             <div class="text-center text-[#B8860B] text-2xl mb-4">❃ ──────── ❃</div>
-            <h2 class="text-3xl font-bold text-center mb-16 text-[#800000]">Lembaran Memori Kuno</h2>
+            <h2 class="text-3xl font-bold text-center mb-16 text-[#420C14]">Lembaran Memori Kuno</h2>
             
             <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/40 h-[75%] top-40"></div>
             <div class="max-w-4xl mx-auto px-6 relative space-y-16">
@@ -150,9 +156,9 @@
 
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
                     <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm p-6 rounded-none border-l-4 border-r-4 border-[#800000] shadow-md relative">
-                        <div class="absolute -top-3 left-4 bg-[#FAF4E8] px-2 text-xs text-[#800000] italic font-serif-ornament">Dua Jiwa, Satu Frekuensi</div>
+                        <div class="absolute -top-3 left-4 bg-[#FAF4E8] px-2 text-xs text-[#420C14] italic font-serif-ornament">Dua Jiwa, Satu Frekuensi</div>
                         <div class="space-y-3 mt-2 text-xs leading-relaxed">
-                            <p class="text-right text-[#800000] italic">"Kemana kita akan melangkah esok hari?..."</p>
+                            <p class="text-right text-[#420C14] italic">"Kemana kita akan melangkah esok hari?..."</p>
                             <p class="text-left text-[#556B2F] font-semibold">"Ke manapun tak masalah, asal genggaman jemarimu tak pernah lepas."</p>
                         </div>
                     </div>
@@ -165,7 +171,7 @@
         </section>
 
         <section id="candle-section" class="bg-section-candle min-h-screen flex flex-col items-center justify-center text-center px-4 relative">
-            <h2 class="text-2xl font-bold mb-2 text-[#800000]">Ritual Lilin Kehidupan</h2>
+            <h2 class="text-2xl font-bold mb-2 text-[#420C14]">Ritual Lilin Kehidupan</h2>
             <p class="text-xs text-[#556B2F] mb-12 italic max-w-xs">(Aktifkan mikrofon perangkat Anda, lalu tiup dengan ketulusan hati untuk memadamkan api)</p>
             
             <div class="relative w-64 h-64 flex items-center justify-center">
@@ -180,12 +186,12 @@
         <section id="wish-section" class="bg-section-wish min-h-screen flex flex-col items-center justify-center text-center px-4 hidden relative overflow-hidden">
             
             <div class="max-w-md w-full bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-2xl transition-all duration-1000 z-10" id="wish-box">
-                <h2 class="text-xl font-bold mb-2 text-[#800000]">Manifestasi Harapan 📜</h2>
+                <h2 class="text-xl font-bold mb-2 text-[#420C14]">Manifestasi Harapan 📜</h2>
                 <p class="text-xs text-[#556B2F] mb-6 italic">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
                 
-                <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1] border-2 border-dashed border-[#B8860B]/40 text-[#3D2D21] placeholder-[#3D2D21]/40 focus:outline-none focus:border-[#800000] text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
+                <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1] border-2 border-dashed border-[#B8860B]/40 text-[#3D2D21] placeholder-[#3D2D21]/40 focus:outline-none focus:border-[#420C14] text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
                 
-                <button onclick="flyWish()" class="mt-5 w-full py-3 bg-[#3D2D21] text-[#F7F1E1] text-sm font-serif-ornament hover:bg-[#800000] transition-all cursor-pointer border border-[#B8860B]">
+                <button onclick="flyWish()" class="mt-5 w-full py-3 bg-[#3D2D21] text-[#F7F1E1] text-sm font-serif-ornament hover:bg-[#420C14] transition-all cursor-pointer border border-[#B8860B]">
                     Terbangkan Harapan Ke Angkasa ✧
                 </button>
             </div>
@@ -193,7 +199,7 @@
             <div id="popup-message" class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-700 px-4">
                 <div class="bg-[#F7F1E1] victorian-border max-w-sm w-full text-center shadow-2xl p-8 relative scale-90 transition-transform duration-700" id="popup-card">
                     <span class="text-[#B8860B] text-2xl block mb-2">✧ ✨ ✧</span>
-                    <h3 class="text-xl font-bold text-[#800000] mb-3">Harapanmu Telah Terkirim!</h3>
+                    <h3 class="text-xl font-bold text-[#420C14] mb-3">Harapanmu Telah Terkirim!</h3>
                     
                     <p id="duplicated-wish" class="text-xs text-[#3D2D21]/80 italic border-y border-[#B8860B]/20 py-3 my-4 bg-[#FBC5C5]/10 max-h-24 overflow-y-auto"></p>
                     
