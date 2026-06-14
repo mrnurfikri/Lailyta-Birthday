@@ -43,23 +43,6 @@
         .victorian-border::before { content: "❦"; position: absolute; top: 2px; left: 5px; color: #B8860B; font-size: 1.2rem; }
         .victorian-border::after { content: "❦"; position: absolute; bottom: 2px; right: 5px; color: #B8860B; font-size: 1.2rem; transform: rotate(180deg); }
 
-        /* ANIMASI BARU: Tali Lepas & Sampul Terbuka */
-        .string-line {
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: center;
-        }
-        .string-untied {
-            transform: scaleY(0) translateY(-50px);
-            opacity: 0;
-        }
-        .envelope-flap {
-            transition: transform 1.2s ease-in-out;
-            transform-origin: top;
-        }
-        .envelope-open {
-            transform: rotateX(185deg);
-        }
-
         /* Efek Ketikan Teks */
         .typing-effect {
             border-right: 2px solid #B8860B;
@@ -73,28 +56,19 @@
 
     <audio id="bgm" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
 
-    <div id="envelope-container" class="fixed inset-0 z-50 flex items-center justify-center bg-[#3D2D21]/40 backdrop-blur-md px-4">
-        <div class="w-full max-w-md bg-[#FAF4E8] rounded-sm border-2 border-[#B8860B] shadow-2xl overflow-hidden relative pt-12 pb-8 px-6 text-center">
+    <div id="envelope-container" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#3D2D21]/50 backdrop-blur-md px-4">
+        <div class="w-full max-w-sm text-center bg-[#FAF4E8] p-6 rounded-sm border border-[#B8860B]/30 shadow-2xl">
             
-            <div id="env-flap" class="envelope-flap absolute top-0 left-0 right-0 h-12 bg-[#FBC5C5] border-b border-[#B8860B] z-20"></div>
-            
-            <div id="string-group" class="relative z-30 flex flex-col items-center justify-center my-6">
-                <div class="w-6 h-6 rounded-full bg-[#800000] border border-[#B8860B] flex items-center justify-center shadow-md">
-                    <div class="w-2 h-2 rounded-full bg-[#B8860B]"></div>
-                </div>
-                <div id="string-vertical" class="string-line w-0.5 h-16 bg-[#B8860B] my-1 shadow-sm"></div>
-                <div class="w-6 h-6 rounded-full bg-[#800000] border border-[#B8860B] flex items-center justify-center shadow-md">
-                    <div class="w-2 h-2 rounded-full bg-[#B8860B]"></div>
-                </div>
+            <div class="relative overflow-hidden border-2 border-[#B8860B] p-1 bg-white mb-6">
+                <img id="vintage-envelope-img" src="surat1.png" alt="Surat Kuno" class="w-full h-auto object-cover transition-all duration-100">
             </div>
-
-            <div id="env-text" class="transition-opacity duration-500">
+            
+            <div id="env-controls">
                 <span class="text-[#800000] block text-lg mb-1">❦</span>
-                <h3 class="font-serif-ornament text-[#3D2D21] text-lg font-bold mb-1">Dokumen Rahasia Kuno</h3>
-                <p class="text-[10px] text-[#556B2F] tracking-widest uppercase font-semibold mb-6">Tersegel Khusus Untuk Orang Spesial</p>
+                <h3 class="font-serif-ornament text-[#3D2D21] text-base font-bold mb-4">Sebuah Pesan yang Terawat Waktu</h3>
                 
-                <button onclick="untieEnvelope()" class="px-5 py-2.5 bg-gradient-to-b from-[#B8860B] to-[#966F03] text-[#F7F1E1] rounded-none font-serif-ornament uppercase tracking-widest text-xs shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer border border-[#3D2D21]/20">
-                    Lepas Tali & Buka ✉
+                <button id="btn-buka" onclick="startEnvelopeAnimation()" class="px-6 py-2.5 bg-[#3D2D21] text-[#F7F1E1] text-xs font-serif-ornament tracking-widest uppercase hover:bg-[#800000] transition-all cursor-pointer border border-[#B8860B]">
+                    Lepas Tali & Buka Surat ✉
                 </button>
             </div>
         </div>
@@ -221,35 +195,62 @@
             "Sebab bagiku, kamu adalah keanggunan yang konstan."
         ];
         
-        // 1. BARU: Fungsi Lepas Tali & Amplop Terbuka
-        function untieEnvelope() {
-            // Animasi tali terlepas (mengecil vertikal)
-            document.getElementById('string-vertical').classList.add('string-untied');
+        // 1. DAFTAR 6 FOTO SEQUENCE DENGAN FORMAT .PNG
+        const envelopeFrames = [
+            "surat1.png", // Kondisi diam awal terikat tali
+            "surat2.png", // Tali mulai kendor
+            "surat3.png", // Tali lepas total
+            "surat4.png", // Amplop terbuka sedikit
+            "surat5.png", // Amplop terbuka lebar
+            "surat6.png"  // Surat ditarik keluar penuh
+        ];
+
+        // TEKNIK PRELOADING: Mengunduh foto PNG di awal agar animasi stop-motion instant tanpa kedipan putih
+        envelopeFrames.forEach((frame) => {
+            const img = new Image();
+            img.src = frame;
+        });
+
+        // FUNGSI ANIMASI STOP-MOTION IMAGE SWAP
+        function startEnvelopeAnimation() {
+            const imgElement = document.getElementById('vintage-envelope-img');
+            const btnBuka = document.getElementById('btn-buka');
             
-            setTimeout(() => {
-                // Animasi penutup lipatan surat terbalik ke atas
-                document.getElementById('env-flap').classList.add('envelope-open');
-                document.getElementById('env-text').classList.add('opacity-0');
-            }, 800);
+            // Menyembunyikan tombol secara halus saat animasi dimulai
+            btnBuka.style.opacity = '0';
+            btnBuka.style.pointerEvents = 'none';
 
-            setTimeout(() => {
-                // Memudarkan wadah amplop secara keseluruhan
-                const envContainer = document.getElementById('envelope-container');
-                envContainer.style.transition = 'opacity 1s ease-out';
-                envContainer.style.opacity = '0';
+            let currentFrame = 0;
+            
+            // Mengganti file gambar setiap 200ms (Total durasi animasi 1.2 detik)
+            const animationInterval = setInterval(() => {
+                currentFrame++;
                 
-                // Nyalakan Lagu Musik Klasik
-                bgm.play().catch(e => console.log("Audio tertahan policy browser."));
+                if (currentFrame < envelopeFrames.length) {
+                    imgElement.src = envelopeFrames[currentFrame];
+                } else {
+                    clearInterval(animationInterval);
+                    
+                    // Jeda sesaat pada frame ke-6 agar visual akhir terlihat sempurna sebelum memudar
+                    setTimeout(() => {
+                        const container = document.getElementById('envelope-container');
+                        container.style.transition = 'opacity 0.8s ease-out';
+                        container.style.opacity = '0';
+                        
+                        // Menjalankan Musik Backsound Utama
+                        bgm.play().catch(e => console.log("Audio tertahan kebijakan privasi browser."));
 
-                setTimeout(() => {
-                    envContainer.classList.add('hidden');
-                    startTypingEffect();
-                    initMicrophone();
-                }, 1000);
-            }, 2000);
+                        setTimeout(() => {
+                            container.classList.add('hidden');
+                            startTypingEffect();
+                            initMicrophone();
+                        }, 800);
+                    }, 600);
+                }
+            }, 200); 
         }
 
-        // Efek Ketikan Mesin Tik
+        // Efek Ketikan Teks Kuno
         let phraseIdx = 0;
         let charIdx = 0;
         function startTypingEffect() {
@@ -267,7 +268,7 @@
             }
         }
 
-        // 2. Sensor Tiupan Lilin (Microphone)
+        // Sensor Tiupan Lilin (Web Audio API)
         function initMicrophone() {
             const statusDiv = document.getElementById('candle-status');
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -327,7 +328,7 @@
             }, 2000);
         }
 
-        // 3. BARU: Efek Menerbangkan Wish & Memunculkan Popup Hasil Doa
+        // Menerbangkan Wish & Memunculkan Popup Hasil Doa
         function flyWish() {
             const txt = document.getElementById('wish-input').value;
             if(!txt.trim()) {
@@ -335,19 +336,17 @@
                 return;
             }
 
-            // Duplikat tulisan user ke dalam popup card sebelum diterbangkan
             document.getElementById('duplicated-wish').textContent = `"${txt}"`;
-
             const wishBox = document.getElementById('wish-box');
             
-            // Efek kertas surat terbang meluncur ke angkasa
+            // Animasi kertas surat meluncur ke atas langit
             wishBox.style.transform = 'translateY(-140vh) scale(0.1) rotate(-15deg)';
             wishBox.style.opacity = '0';
 
             setTimeout(() => {
                 wishBox.classList.add('hidden');
                 
-                // Letupan kembang api berkelanjutan
+                // Letupan kembang api digital berkelanjutan
                 let end = Date.now() + (2 * 1000);
                 (function frame() {
                     confetti({ particleCount: 2, angle: 60, spread: 45, origin: { x: 0 }, colors: ['#B8860B', '#FBC5C5'] });
@@ -355,7 +354,6 @@
                     if (Date.now() < end) { requestAnimationFrame(frame); }
                 }());
 
-                // Munculkan POPUP CARD utama ke layar
                 const popupMessage = document.getElementById('popup-message');
                 popupMessage.classList.remove('hidden');
                 
