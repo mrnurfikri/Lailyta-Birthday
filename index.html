@@ -34,17 +34,16 @@
         }
         body, p, textarea, button {
             font-family: 'Wasted Vindey', Arial, sans-serif;
-            color: #420C14; /* PERBAIKAN: Default teks utama disesuaikan ke Dark Burgundy */
+            color: #420C14; 
         }
         html { scroll-behavior: smooth; }
 
-        /* PERBAIKAN: Mengatur ketebalan khusus semi-bold untuk jenis tulisan tangan agar tidak tenggelam */
         .script-font-bold {
             font-family: 'Wasted Vindey', Arial, sans-serif;
-            font-weight: 600; /* Semi-bold */
+            font-weight: 600; 
         }
 
-        /* 3. BACKGROUND IMAGE (HERO = .PNG | TIMELINE, CANDLE, WISH = .JPG) */
+        /* 3. BACKGROUND IMAGE CONFIGURATION */
         .bg-section-hero {
             background-image: url('bg_hero.png');
             background-size: cover;
@@ -73,7 +72,7 @@
             background-repeat: no-repeat;
         }
 
-        /* Bingkai Ornamen Victorian */
+        /* Bingkai Ornamen Victorian Tradisional (Untuk Bagian Timeline) */
         .victorian-border {
             border: 4px double #B8860B;
             outline: 1px solid #B8860B;
@@ -83,6 +82,40 @@
         }
         .victorian-border::before { content: "❦"; position: absolute; top: 2px; left: 5px; color: #B8860B; font-size: 1.2rem; }
         .victorian-border::after { content: "❦"; position: absolute; bottom: 2px; right: 5px; color: #B8860B; font-size: 1.2rem; transform: rotate(180deg); }
+
+        /* BARU: BINGKAI CELESTIAL ART NOUVEAU (Khusus Kotak Surat Harapan) */
+        .celestial-stardust-border {
+            border: 1px solid #0B1B3D; /* Deep Celestial Navy Blue */
+            outline: 1px dashed #D1D5DB; /* Metallic Silver Highlight */
+            outline-offset: -5px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            /* Efek Bayangan Lembut Deep Midnight Blue Membuat Kotak Terlihat Melayang Magis di Luar Angkasa */
+            box-shadow: 0 30px 60px -15px rgba(11, 27, 61, 0.4), 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+        }
+        
+        /* Ornamen Sudut Berbentuk Galaksi Pusaran (Organic Filigree Galaxy) */
+        .celestial-stardust-border::before {
+            content: "🌀"; /* Simbol pusaran kosmis */
+            font-size: 1rem;
+            position: absolute;
+            top: -4px;
+            left: -2px;
+            color: #0B1B3D;
+            text-shadow: 1px 1px 0px #D1D5DB; /* Efek kilatan perak perwujudan bintang */
+            filter: opacity(0.85);
+        }
+        
+        .celestial-stardust-border::after {
+            content: "🌀";
+            font-size: 1rem;
+            position: absolute;
+            bottom: -4px;
+            right: -2px;
+            color: #0B1B3D;
+            text-shadow: -1px -1px 0px #D1D5DB;
+            filter: opacity(0.85);
+        }
 
         /* Efek Ketikan Teks */
         .typing-effect {
@@ -185,29 +218,29 @@
 
         <section id="wish-section" class="bg-section-wish min-h-screen flex flex-col items-center justify-center text-center px-4 hidden relative overflow-hidden">
             
-            <div class="max-w-md w-full bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-2xl transition-all duration-1000 z-10" id="wish-box">
-                <h2 class="text-xl font-bold mb-2 text-[#420C14]">Manifestasi Harapan 📜</h2>
-                <p class="text-xs text-[#556B2F] mb-6 italic">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
+            <div class="max-w-md w-full bg-[#F7F1E1]/90 backdrop-blur-sm celestial-stardust-border transition-all duration-1000 z-10" id="wish-box">
+                <h2 class="text-xl font-bold mb-2 text-[#0B1B3D]">Manifestasi Harapan 📜</h2>
+                <p class="text-xs text-[#420C14] mb-6 italic font-medium">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
                 
-                <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1] border-2 border-dashed border-[#B8860B]/40 text-[#3D2D21] placeholder-[#3D2D21]/40 focus:outline-none focus:border-[#420C14] text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
+                <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1]/50 border-2 border-dashed border-[#0B1B3D]/30 text-[#0B1B3D] placeholder-[#0B1B3D]/40 focus:outline-none focus:border-[#0B1B3D] text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
                 
-                <button onclick="flyWish()" class="mt-5 w-full py-3 bg-[#3D2D21] text-[#F7F1E1] text-sm font-serif-ornament hover:bg-[#420C14] transition-all cursor-pointer border border-[#B8860B]">
+                <button onclick="flyWish()" class="mt-5 w-full py-3 bg-[#0B1B3D] text-[#F7F1E1] text-sm font-serif-ornament hover:bg-[#420C14] transition-all cursor-pointer border border-[#D1D5DB]/30 shadow-md">
                     Terbangkan Harapan Ke Angkasa ✧
                 </button>
             </div>
 
             <div id="popup-message" class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-700 px-4">
-                <div class="bg-[#F7F1E1] victorian-border max-w-sm w-full text-center shadow-2xl p-8 relative scale-90 transition-transform duration-700" id="popup-card">
-                    <span class="text-[#B8860B] text-2xl block mb-2">✧ ✨ ✧</span>
-                    <h3 class="text-xl font-bold text-[#420C14] mb-3">Harapanmu Telah Terkirim!</h3>
+                <div class="bg-[#F7F1E1] celestial-stardust-border max-w-sm w-full text-center shadow-2xl p-8 relative scale-90 transition-transform duration-700" id="popup-card">
+                    <span class="text-[#0B1B3D] text-2xl block mb-2">✧ ✨ ✧</span>
+                    <h3 class="text-xl font-bold text-[#0B1B3D] mb-3">Harapanmu Telah Terkirim!</h3>
                     
-                    <p id="duplicated-wish" class="text-xs text-[#3D2D21]/80 italic border-y border-[#B8860B]/20 py-3 my-4 bg-[#FBC5C5]/10 max-h-24 overflow-y-auto"></p>
+                    <p id="duplicated-wish" class="text-xs text-[#0B1B3D]/80 italic border-y border-[#0B1B3D]/20 py-3 my-4 bg-white/40 max-h-24 overflow-y-auto"></p>
                     
                     <p class="text-sm font-semibold text-[#556B2F] leading-relaxed mb-6 italic">
                         "Semoga doa terbaikmu bisa dikabulkan dan didengar oleh semesta raya. Selalu bahagia ya! ❤️"
                     </p>
                     
-                    <a href="https://wa.me/6281234567890?text=Kado%20digitalnya%20sangat%20indah%20dan%20elegan.%20Terima%20kasih%20banyak%20ya%20❤️✨" target="_blank" class="w-full block py-2.5 border border-[#3D2D21] text-xs bg-[#3D2D21] text-[#F7F1E1] hover:bg-transparent hover:text-[#3D2D21] transition-all font-semibold">
+                    <a href="https://wa.me/6281234567890?text=Kado%20digitalnya%20sangat%20indah%20dan%20elegan.%20Terima%20kasih%20banyak%20ya%20❤️✨" target="_blank" class="w-full block py-2.5 border border-[#D1D5DB]/20 text-xs bg-[#0B1B3D] text-[#F7F1E1] hover:bg-transparent hover:text-[#0B1B3D] transition-all font-semibold">
                         Balas Surat Ini via WA ✉
                     </a>
                 </div>
@@ -241,11 +274,9 @@
             "Sebab bagiku, kamu adalah keanggunan yang konstan."
         ];
         
-        // SEQUENCE FOTO SURAT (1-6)
         const envelopeFrames = ["surat1.png", "surat2.png", "surat3.png", "surat4.png", "surat5.png", "surat6.png"];
         envelopeFrames.forEach(f => { const img = new Image(); img.src = f; });
 
-        // SEQUENCE FOTO KUE (1-12)
         const cakeFrames = [];
         for (let i = 1; i <= 12; i++) {
             cakeFrames.push(`kue${i}.png`);
@@ -258,7 +289,6 @@
             else { bgm.muted = true; muteBtn.textContent = "🔇"; }
         }
 
-        // ANIMASI SURAT OPENING + AUTOPLAY AUDIO
         function startEnvelopeAnimation() {
             const imgElement = document.getElementById('vintage-envelope-img');
             const ctaText = document.getElementById('env-cta');
@@ -298,7 +328,6 @@
             }
         }
 
-        // ANIMASI LOOP KUE LILIN MENYALA (FRAME 1-8)
         function startCakeLoopAnimation() {
             let currentLoopFrame = 0;
             cakeInterval = setInterval(() => {
@@ -309,7 +338,6 @@
             }, 150);
         }
 
-        // SENSOR MIKROFON (TIUP LILIN)
         function initMicrophone() {
             const statusDiv = document.getElementById('candle-status');
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -349,7 +377,6 @@
             }
         }
 
-        // ANIMASI PADAM KUE (FRAME 9-12 ONCE)
         function triggerExtinguishSequence() {
             if (isBlown) return;
             isBlown = true;
@@ -365,7 +392,7 @@
                     clearInterval(extinguishInterval);
                     document.getElementById('candle-status').textContent = "❀ Lilin Berhasil Dipadamkan ❀";
                     
-                    confetti({ particleCount: 120, spread: 70, colors: ['#B8860B', '#FBC5C5', '#800000'], origin: { y: 0.65 } });
+                    confetti({ particleCount: 120, spread: 70, colors: ['#0B1B3D', '#FBC5C5', '#B8860B'], origin: { y: 0.65 } });
 
                     setTimeout(() => {
                         const wishSec = document.getElementById('wish-section');
@@ -376,7 +403,6 @@
             }, 200); 
         }
 
-        // MENERBANGKAN WISH & POPUP
         function flyWish() {
             const txt = document.getElementById('wish-input').value;
             if(!txt.trim()) { alert("Mohon goreskan impian Anda terlebih dahulu pada kertas surat."); return; }
@@ -389,8 +415,8 @@
                 wishBox.classList.add('hidden');
                 let end = Date.now() + (2 * 1000);
                 (function frame() {
-                    confetti({ particleCount: 2, angle: 60, spread: 45, origin: { x: 0 }, colors: ['#B8860B', '#FBC5C5'] });
-                    confetti({ particleCount: 2, angle: 120, spread: 45, origin: { x: 1 }, colors: ['#B8860B', '#FBC5C5'] });
+                    confetti({ particleCount: 2, angle: 60, spread: 45, origin: { x: 0 }, colors: ['#0B1B3D', '#B8860B'] });
+                    confetti({ particleCount: 2, angle: 120, spread: 45, origin: { x: 1 }, colors: ['#0B1B3D', '#B8860B'] });
                     if (Date.now() < end) { requestAnimationFrame(frame); }
                 }());
 
