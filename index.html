@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        /* 1. PERBAIKAN DEKLARASI FONT KUSTOM FORMAT .WOFF2 JALUR RELATIF GITHUB */
+        /* 1. DEKLARASI FONT KUSTOM FORMAT .WOFF2 JALUR RELATIF GITHUB */
         @font-face {
             font-family: 'Rustic Roadway';
             src: url('RusticRoadwayPersonaluse.woff2') format('woff2');
@@ -34,16 +34,37 @@
         }
         body, p, textarea, button {
             font-family: 'Wasted Vindey', Arial, sans-serif;
-            background-color: #F7F1E1; 
             color: #3D2D21; 
         }
         html { scroll-behavior: smooth; }
 
-        /* Tekstur Kertas Kuno untuk Halaman Utama */
-        .vintage-paper {
-            background-color: #F7F1E1;
-            background-image: radial-gradient(rgba(61, 45, 33, 0.03) 1px, transparent 0);
-            background-size: 24px 24px;
+        /* 3. PENYESUAIAN BACKGROUND IMAGE (HERO = .PNG | TIMELINE, CANDLE, WISH = .JPG) */
+        .bg-section-hero {
+            background-image: url('bg_hero.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bg-section-timeline {
+            background-image: url('bg_timeline.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bg-section-candle {
+            background-image: url('bg_candle.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bg-section-wish {
+            background-image: url('bg_wish.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Bingkai Ornamen Victorian */
@@ -66,7 +87,7 @@
         @keyframes blinking { from, to { border-color: transparent } 50% { border-color: #B8860B; } }
     </style>
 </head>
-<body class="vintage-paper min-h-screen overflow-x-hidden selection:bg-pink-200 selection:text-maroon">
+<body class="min-h-screen overflow-x-hidden selection:bg-pink-200 selection:text-maroon">
 
     <audio id="bgm" src="enchanted.mp3" loop></audio>
 
@@ -93,12 +114,12 @@
 
     <main class="min-h-screen">
 
-        <header class="w-full py-6 px-4 border-b border-[#B8860B]/30 bg-[#FBC5C5]/10 text-center">
+        <header class="w-full py-6 px-4 border-b border-[#B8860B]/30 bg-white/40 backdrop-blur-sm text-center">
             <div class="text-[#B8860B] text-xl tracking-widest mb-1">❧ ⚜ ☙</div>
             <div class="text-xs font-semibold text-[#3D2D21]/70">Timeless Remembrance</div>
         </header>
 
-        <section class="min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative bg-gradient-to-b from-[#FBC5C5]/20 to-transparent">
+        <section class="bg-section-hero min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative">
             <h1 class="text-4xl md:text-6xl font-bold text-[#800000] tracking-wide mb-6">
                 Selamat Ulang Tahun, <span class="italic text-[#B8860B]">Sayang</span> ✨
             </h1>
@@ -110,7 +131,7 @@
             </div>
         </section>
 
-        <section class="py-20 bg-[#E0F2F1] text-[#3D2D21] relative border-y border-[#B8860B]/20">
+        <section class="bg-section-timeline py-20 text-[#3D2D21] relative border-y border-[#B8860B]/20">
             <div class="text-center text-[#B8860B] text-2xl mb-4">❃ ──────── ❃</div>
             <h2 class="text-3xl font-bold text-center mb-16 text-[#800000]">Lembaran Memori Kuno</h2>
             
@@ -118,7 +139,7 @@
             <div class="max-w-4xl mx-auto px-6 relative space-y-16">
 
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
-                    <div class="w-full md:w-5/12 bg-[#F7F1E1] victorian-border shadow-xl">
+                    <div class="w-full md:w-5/12 bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold block mb-3 font-serif-ornament">I. Awal Mula Kisah</span>
                         <img src="https://picsum.photos/400/250?random=1" alt="Memori 1" class="w-full h-44 object-cover sepia border border-[#3D2D21]/20">
                         <p class="text-xs text-[#3D2D21]/90 mt-4 leading-relaxed italic">"Waktu seolah berhenti saat pertama kali tatap itu beradu. Di situ, lembar pertama kisah kita resmi ditulis."</p>
@@ -128,8 +149,8 @@
                 </div>
 
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                    <div class="w-full md:w-5/12 bg-[#FBC5C5]/30 p-6 rounded-none border-l-4 border-r-4 border-[#800000] shadow-md relative">
-                        <div class="absolute -top-3 left-4 bg-[#E0F2F1] px-2 text-xs text-[#800000] italic font-serif-ornament">Dua Jiwa, Satu Frekuensi</div>
+                    <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm p-6 rounded-none border-l-4 border-r-4 border-[#800000] shadow-md relative">
+                        <div class="absolute -top-3 left-4 bg-[#FAF4E8] px-2 text-xs text-[#800000] italic font-serif-ornament">Dua Jiwa, Satu Frekuensi</div>
                         <div class="space-y-3 mt-2 text-xs leading-relaxed">
                             <p class="text-right text-[#800000] italic">"Kemana kita akan melangkah esok hari?..."</p>
                             <p class="text-left text-[#556B2F] font-semibold">"Ke manapun tak masalah, asal genggaman jemarimu tak pernah lepas."</p>
@@ -143,7 +164,7 @@
             <div class="text-center text-[#B8860B] text-2xl mt-12">❃ ──────── ❃</div>
         </section>
 
-        <section id="candle-section" class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative bg-[#FBC5C5]/10">
+        <section id="candle-section" class="bg-section-candle min-h-screen flex flex-col items-center justify-center text-center px-4 relative">
             <h2 class="text-2xl font-bold mb-2 text-[#800000]">Ritual Lilin Kehidupan</h2>
             <p class="text-xs text-[#556B2F] mb-12 italic max-w-xs">(Aktifkan mikrofon perangkat Anda, lalu tiup dengan ketulusan hati untuk memadamkan api)</p>
             
@@ -151,14 +172,14 @@
                 <img id="vintage-cake-img" src="kue1.png" alt="Kue Ulang Tahun" class="w-full h-auto object-contain drop-shadow-[0_15px_30px_rgba(61,45,33,0.2)] cursor-pointer">
             </div>
 
-            <div id="candle-status" class="mt-8 px-4 py-1.5 bg-[#3D2D21]/5 border border-[#3D2D21]/10 text-xs text-[#3D2D21]/70">
+            <div id="candle-status" class="mt-8 px-4 py-1.5 bg-white/80 backdrop-blur-sm border border-[#3D2D21]/10 text-xs text-[#3D2D21]/70">
                 Menghubungkan ke sensor udara...
             </div>
         </section>
 
-        <section id="wish-section" class="min-h-screen flex flex-col items-center justify-center text-center px-4 hidden relative overflow-hidden bg-gradient-to-b from-transparent to-[#FBC5C5]/20">
+        <section id="wish-section" class="bg-section-wish min-h-screen flex flex-col items-center justify-center text-center px-4 hidden relative overflow-hidden">
             
-            <div class="max-w-md w-full bg-[#F7F1E1] victorian-border shadow-2xl transition-all duration-1000 z-10" id="wish-box">
+            <div class="max-w-md w-full bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-2xl transition-all duration-1000 z-10" id="wish-box">
                 <h2 class="text-xl font-bold mb-2 text-[#800000]">Manifestasi Harapan 📜</h2>
                 <p class="text-xs text-[#556B2F] mb-6 italic">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
                 
@@ -187,7 +208,7 @@
             </div>
         </section>
 
-        <footer class="w-full py-8 text-center text-xs text-[#3D2D21]/50 border-t border-[#B8860B]/20 bg-[#F7F1E1]">
+        <footer class="w-full py-8 text-center text-xs text-[#3D2D21]/50 border-t border-[#B8860B]/20 bg-white/40">
             <div class="mb-2">⚜</div>
             <p>© 2026 • Dibuat dengan Penuh Ketulusan & Keanggunan Abadi</p>
         </footer>
