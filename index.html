@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        /* 1. DEKLARASI FONT KUSTOM .WOFF GITHUB */
+        /* 1. DEKLARASI FONT KUSTOM FORMAT .WOFF JALUR RELATIF GITHUB */
         @font-face {
             font-family: 'Rustic Roadway';
             src: url('RusticRoadwayPersonaluse.woff') format('woff');
@@ -69,7 +69,7 @@
 </head>
 <body class="vintage-paper min-h-screen overflow-x-hidden selection:bg-pink-200 selection:text-maroon">
 
-    <!-- AUDIO BACKSOUND -->
+    <!-- AUDIO BACKSOUND (Letakkan file enchanted.mp3 satu folder dengan file ini di GitHub Anda) -->
     <audio id="bgm" src="enchanted.mp3" loop></audio>
 
     <!-- TOMBOL MUTE / UNMUTE FLOATING -->
@@ -87,10 +87,10 @@
                 <img id="vintage-envelope-img" src="surat1.png" alt="Surat Kuno" class="w-full h-auto object-contain max-h-[55vh] drop-shadow-[0_20px_35px_rgba(61,45,33,0.25)] transition-all duration-100">
             </div>
             
-            <!-- Teks Petunjuk Minimalis (CTA) - Tidak ada Kapitalisasi Otomatis -->
+            <!-- Teks Petunjuk Minimalis (CTA) - [Auto Capslock Bersih] -->
             <div id="env-cta" class="transition-all duration-500 text-center">
-                <p class="font-serif-ornament text-[#3D2D21]/60 text-base italic font-medium group-hover:text-[#B8860B] group-hover:opacity-100">
-                    Ketuk untuk buka surat ✉
+                <p class="font-serif-ornament text-[#3D2D21]/60 text-base font-medium group-hover:text-[#B8860B] group-hover:opacity-100">
+                    Tap untuk buka surat ✉
                 </p>
             </div>
             
@@ -103,8 +103,8 @@
 
         <!-- HEADER UTAMA WEBSITE -->
         <header class="w-full py-6 px-4 border-b border-[#B8860B]/30 bg-[#FBC5C5]/10 text-center">
-            <div class="text-[#B8860B] text-xl mb-1">❧ ⚜ ☙</div>
-            <div class="text-sm font-semibold text-[#3D2D21]/70">Timeless remembrance</div>
+            <div class="text-[#B8860B] text-xl tracking-widest mb-1">❧ ⚜ ☙</div>
+            <div class="text-xs font-semibold text-[#3D2D21]/70">Timeless Remembrance</div>
         </header>
 
         <!-- HERO SECTION -->
@@ -115,8 +115,9 @@
             <div class="h-8">
                 <p id="typing-text" class="typing-effect text-sm md:text-lg text-[#3D2D21] italic font-light"></p>
             </div>
-            <div class="absolute bottom-12 animate-bounce text-[#B8860B] text-sm">
-                Gulir ke bawah perlahan <br> ⏳
+            <!-- [Auto Capslock Bersih] -->
+            <div class="absolute bottom-12 animate-bounce text-[#B8860B] text-xs">
+                Gulir ke bawah perlahan ya... <br> ⏳
             </div>
         </section>
 
@@ -131,9 +132,10 @@
                 <!-- Item Kiri -->
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1] victorian-border shadow-xl">
-                        <span class="text-sm text-[#556B2F] font-semibold block mb-3 font-serif-ornament">I. Awal mula kisah</span>
+                        <!-- [Auto Capslock Bersih] -->
+                        <span class="text-xs text-[#556B2F] font-semibold block mb-3 font-serif-ornament">I. Awal Mula Kisah</span>
                         <img src="https://picsum.photos/400/250?random=1" alt="Memori 1" class="w-full h-44 object-cover sepia border border-[#3D2D21]/20">
-                        <p class="text-sm text-[#3D2D21]/90 mt-4 leading-relaxed italic">"Waktu seolah berhenti saat pertama kali tatap itu beradu. Di situ, lembar pertama kisah kita resmi ditulis."</p>
+                        <p class="text-xs text-[#3D2D21]/90 mt-4 leading-relaxed italic">"Waktu seolah berhenti saat pertama kali tatap itu beradu. Di situ, lembar pertama kisah kita resmi ditulis."</p>
                     </div>
                     <div class="hidden md:block w-2/12"></div>
                     <div class="w-full md:w-5/12"></div>
@@ -142,8 +144,8 @@
                 <!-- Item Kanan -->
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
                     <div class="w-full md:w-5/12 bg-[#FBC5C5]/30 p-6 rounded-none border-l-4 border-r-4 border-[#800000] shadow-md relative">
-                        <div class="absolute -top-3 left-4 bg-[#E0F2F1] px-2 text-sm text-[#800000] italic font-serif-ornament">Dua jiwa, satu frekuensi</div>
-                        <div class="space-y-3 mt-2 text-sm leading-relaxed">
+                        <div class="absolute -top-3 left-4 bg-[#E0F2F1] px-2 text-xs text-[#800000] italic font-serif-ornament">Dua Jiwa, Satu Frekuensi</div>
+                        <div class="space-y-3 mt-2 text-xs leading-relaxed">
                             <p class="text-right text-[#800000] italic">"Kemana kita akan melangkah esok hari?..."</p>
                             <p class="text-left text-[#556B2F] font-semibold">"Ke manapun tak masalah, asal genggaman jemarimu tak pernah lepas."</p>
                         </div>
@@ -159,14 +161,15 @@
         <!-- 3. FITUR KUE & LILIN STOP-MOTION -->
         <section id="candle-section" class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative bg-[#FBC5C5]/10">
             <h2 class="text-2xl font-bold mb-2 text-[#800000]">Ritual Lilin Kehidupan</h2>
-            <p class="text-sm text-[#556B2F] mb-12 italic max-w-xs">(Aktifkan mikrofon perangkat Anda, lalu tiup dengan ketulusan hati untuk memadamkan api)</p>
+            <p class="text-xs text-[#556B2F] mb-12 italic max-w-xs">(Aktifkan mikrofon perangkat Anda, lalu tiup dengan ketulusan hati untuk memadamkan api)</p>
             
-            <!-- Wadah Gambar Kue Interaktif PNG -->
+            <!-- Wadah Utama Gambar Kue Interaktif PNG -->
             <div class="relative w-64 h-64 flex items-center justify-center">
                 <img id="vintage-cake-img" src="kue1.png" alt="Kue Ulang Tahun" class="w-full h-auto object-contain drop-shadow-[0_15px_30px_rgba(61,45,33,0.2)] cursor-pointer">
             </div>
 
-            <div id="candle-status" class="mt-8 px-4 py-1.5 bg-[#3D2D21]/5 border border-[#3D2D21]/10 text-sm text-[#3D2D21]/70">
+            <!-- [Auto Capslock Bersih] -->
+            <div id="candle-status" class="mt-8 px-4 py-1.5 bg-[#3D2D21]/5 border border-[#3D2D21]/10 text-xs text-[#3D2D21]/70">
                 Menghubungkan ke sensor udara...
             </div>
         </section>
@@ -177,10 +180,11 @@
             <!-- Kotak Surat Kuno -->
             <div class="max-w-md w-full bg-[#F7F1E1] victorian-border shadow-2xl transition-all duration-1000 z-10" id="wish-box">
                 <h2 class="text-xl font-bold mb-2 text-[#800000]">Manifestasi Harapan 📜</h2>
-                <p class="text-sm text-[#556B2F] mb-6 italic">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
+                <p class="text-xs text-[#556B2F] mb-6 italic">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
                 
-                <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1] border-2 border-dashed border-[#B8860B]/40 text-[#3D2D21] placeholder-[#3D2D21]/40 focus:outline-none focus:border-[#800000] text-sm leading-relaxed italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
+                <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1] border-2 border-dashed border-[#B8860B]/40 text-[#3D2D21] placeholder-[#3D2D21]/40 focus:outline-none focus:border-[#800000] text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
                 
+                <!-- [Auto Capslock Bersih] -->
                 <button onclick="flyWish()" class="mt-5 w-full py-3 bg-[#3D2D21] text-[#F7F1E1] text-sm font-serif-ornament hover:bg-[#800000] transition-all cursor-pointer border border-[#B8860B]">
                     Terbangkan Harapan Ke Angkasa ✧
                 </button>
@@ -192,12 +196,13 @@
                     <span class="text-[#B8860B] text-2xl block mb-2">✧ ✨ ✧</span>
                     <h3 class="text-xl font-bold text-[#800000] mb-3">Harapanmu Telah Terkirim!</h3>
                     
-                    <p id="duplicated-wish" class="text-sm text-[#3D2D21]/80 italic border-y border-[#B8860B]/20 py-3 my-4 bg-[#FBC5C5]/10 max-h-24 overflow-y-auto"></p>
+                    <p id="duplicated-wish" class="text-xs text-[#3D2D21]/80 italic border-y border-[#B8860B]/20 py-3 my-4 bg-[#FBC5C5]/10 max-h-24 overflow-y-auto"></p>
                     
-                    <p class="text-base font-semibold text-[#556B2F] leading-relaxed mb-6 italic">
+                    <p class="text-sm font-semibold text-[#556B2F] leading-relaxed mb-6 italic">
                         "Semoga doa terbaikmu bisa dikabulkan dan didengar oleh semesta raya. Selalu bahagia ya! ❤️"
                     </p>
                     
+                    <!-- [Auto Capslock Bersih] -->
                     <a href="https://wa.me/6281234567890?text=Kado%20digitalnya%20sangat%20indah%20dan%20elegan.%20Terima%20kasih%20banyak%20ya%20❤️✨" target="_blank" class="w-full block py-2.5 border border-[#3D2D21] text-xs bg-[#3D2D21] text-[#F7F1E1] hover:bg-transparent hover:text-[#3D2D21] transition-all font-semibold">
                         Balas Surat Ini via WA ✉
                     </a>
@@ -206,7 +211,7 @@
         </section>
 
         <!-- FOOTER ELEGAN -->
-        <footer class="w-full py-8 text-center text-sm text-[#3D2D21]/50 border-t border-[#B8860B]/20 bg-[#F7F1E1]">
+        <footer class="w-full py-8 text-center text-xs text-[#3D2D21]/50 border-t border-[#B8860B]/20 bg-[#F7F1E1]">
             <div class="mb-2">⚜</div>
             <p>© 2026 • Dibuat dengan Penuh Ketulusan & Keanggunan Abadi</p>
         </footer>
@@ -234,9 +239,11 @@
             "Sebab bagiku, kamu adalah keanggunan yang konstan."
         ];
         
+        // SEQUENCE FOTO SURAT (1-6)
         const envelopeFrames = ["surat1.png", "surat2.png", "surat3.png", "surat4.png", "surat5.png", "surat6.png"];
         envelopeFrames.forEach(f => { const img = new Image(); img.src = f; });
 
+        // SEQUENCE FOTO KUE (1-12)
         const cakeFrames = [];
         for (let i = 1; i <= 12; i++) {
             cakeFrames.push(`kue${i}.png`);
@@ -249,6 +256,7 @@
             else { bgm.muted = true; muteBtn.textContent = "🔇"; }
         }
 
+        // ANIMASI SURAT OPENING + AUTOPLAY AUDIO
         function startEnvelopeAnimation() {
             const imgElement = document.getElementById('vintage-envelope-img');
             const ctaText = document.getElementById('env-cta');
@@ -288,6 +296,7 @@
             }
         }
 
+        // ANIMASI LOOP KUE LILIN MENYALA (FRAME 1-8)
         function startCakeLoopAnimation() {
             let currentLoopFrame = 0;
             cakeInterval = setInterval(() => {
@@ -298,6 +307,7 @@
             }, 150);
         }
 
+        // SENSOR MIKROFON (TIUP LILIN)
         function initMicrophone() {
             const statusDiv = document.getElementById('candle-status');
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -337,6 +347,7 @@
             }
         }
 
+        // ANIMASI PADAM KUE (FRAME 9-12 ONCE)
         function triggerExtinguishSequence() {
             if (isBlown) return;
             isBlown = true;
@@ -350,7 +361,7 @@
                     fireFrame++;
                 } else {
                     clearInterval(extinguishInterval);
-                    document.getElementById('candle-status').textContent = "❀ Lilin berhasil dipadamkan ❀";
+                    document.getElementById('candle-status').textContent = "❀ Lilin Berhasil Dipadamkan ❀";
                     
                     confetti({ particleCount: 120, spread: 70, colors: ['#B8860B', '#FBC5C5', '#800000'], origin: { y: 0.65 } });
 
@@ -363,6 +374,7 @@
             }, 200); 
         }
 
+        // MENERBANGKAN WISH & POPUP
         function flyWish() {
             const txt = document.getElementById('wish-input').value;
             if(!txt.trim()) { alert("Mohon goreskan impian Anda terlebih dahulu pada kertas surat."); return; }
