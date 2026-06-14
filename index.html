@@ -149,20 +149,20 @@
         <!-- SECSION 1: SELAMAT ULANG TAHUN, SAYANG -->
         <section class="bg-section-hero min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative">
             <h1 class="text-4xl md:text-6xl font-bold text-[#420C14] tracking-wide mb-6">
-                Selamat Ulang Tahun, <span class="italic text-[#61353B]">Sayang</span> ✨
+                Selamat Ulang Tahun, <span class="italic text-[#61353B]">Lailyta</span> ✨
             </h1>
             <div class="h-8">
                 <p id="typing-text" class="typing-effect text-sm md:text-lg text-[#420C14] italic script-font-bold"></p>
             </div>
             <div class="absolute bottom-12 animate-bounce text-[#B8860B] text-xs">
-                Gulir ke bawah perlahan ya... <br> ⏳
+                Scroll ke bawah <br> ⏳
             </div>
         </section>
 
         <!-- SECSION 2: LEMBARAN MEMORI (DENGAN CAPTION KUSTOM MANUAL ANDA) -->
         <section class="bg-section-timeline py-20 text-[#3D2D21] relative border-y border-[#B8860B]/20">
             <div class="text-center text-[#B8860B] text-2xl mb-4">❃ ──────── ❃</div>
-            <h2 class="text-3xl font-bold text-center mb-16 text-[#420C14]">Lembaran Memori Kuno</h2>
+            <h2 class="text-3xl font-bold text-center mb-16 text-[#420C14]">Lembaran Memori</h2>
             
             <!-- Garis Tengah Pembagi Cerita -->
             <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/30 h-[84%] top-40"></div>
@@ -250,8 +250,8 @@
 
         <!-- SECSION 3: RITUAL LILIN KEHIDUPAN -->
         <section id="candle-section" class="bg-section-candle min-h-screen flex flex-col items-center justify-center text-center px-4 relative">
-            <h2 class="text-2xl font-bold mb-2 text-[#420C14]">Ritual Lilin Kehidupan</h2>
-            <p class="text-xs text-[#556B2F] mb-12 italic max-w-xs">(Aktifkan mikrofon perangkat Anda, lalu tiup dengan ketulusan hati untuk memadamkan api)</p>
+            <h2 class="text-2xl font-bold mb-2 text-[#420C14]">Tiup Lilin</h2>
+            <p class="text-xs text-[#556B2F] mb-12 italic max-w-xs">(Tiup untuk memadamkan api)</p>
             
             <!-- Wadah Utama Gambar Kue Interaktif PNG -->
             <div class="relative w-64 h-64 flex items-center justify-center">
@@ -271,15 +271,15 @@
                 
                 <!-- KOTAK BINGKAI -->
                 <div class="w-full bg-[#F7F1E1]/80 backdrop-blur-sm custom-image-frame-box text-center transition-all duration-1000" id="wish-box">
-                    <h2 class="text-xl font-bold mb-2 text-[#0B1B3D]">Manifestasi Harapan 📜</h2>
-                    <p class="text-xs text-[#420C14] mb-5 italic font-medium">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
+                    <h2 class="text-xl font-bold mb-2 text-[#0B1B3D]">Manifestasi Harapan</h2>
+                    <p class="text-xs text-[#420C14] mb-5 italic font-medium">Tuliskan doamu dikertas ini</p>
                     
-                    <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1]/40 border border-[#0B1B3D]/10 text-[#0B1B3D] placeholder-[#0B1B3D]/30 focus:outline-none text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
+                    <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1]/40 border border-[#0B1B3D]/10 text-[#0B1B3D] placeholder-[#0B1B3D]/30 focus:outline-none text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu disini..."></textarea>
                 </div>
                 
                 <!-- CTA DI LUAR -->
                 <button onclick="flyWish()" id="btn-submit-wish" class="mt-6 w-11/12 py-3 bg-[#0B1B3D] text-[#F7F1E1] text-xs font-serif-ornament hover:bg-[#420C14] transition-all cursor-pointer border border-[#D1D5DB]/20 shadow-xl tracking-widest rounded-none">
-                    Terbangkan Harapan Ke Angkasa ✧
+                    Terbangkan doamu ke langit sana ✧
                 </button>
 
             </div>
@@ -288,16 +288,16 @@
             <div id="popup-message" class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-700 px-4">
                 <div class="bg-[#F7F1E1]/90 backdrop-blur-sm custom-image-frame-box max-w-sm w-full text-center shadow-2xl transition-transform duration-700" id="popup-card">
                     <span class="text-[#0B1B3D] text-2xl block mb-1">✧ ✨ ✧</span>
-                    <h3 class="text-xl font-bold text-[#0B1B3D] mb-3">Harapanmu Telah Terkirim!</h3>
+                    <h3 class="text-xl font-bold text-[#0B1B3D] mb-3">Doamu Telah Terkirim!</h3>
                     
                     <p id="duplicated-wish" class="text-xs text-[#0B1B3D]/80 italic border-y border-[#0B1B3D]/10 py-3 my-4 bg-white/40 max-h-24 overflow-y-auto"></p>
                     
                     <p class="text-sm font-semibold text-[#556B2F] leading-relaxed mb-6 italic">
-                        "Semoga doa terbaikmu bisa dikabulkan dan didengar oleh semesta raya. Selalu bahagia ya! ❤️"
+                        "Semoga doa terbaikmu dikabulkan dan didengar oleh semesta raya. Doa terbaik untukmu!"
                     </p>
                     
-                    <a href="https://wa.me/6281234567890?text=Kado%20digitalnya%20sangat%20indah%20dan%20elegan.%20Terima%20kasih%20banyak%20ya%20❤️✨" target="_blank" class="w-full block py-2.5 border border-[#D1D5DB]/20 text-xs bg-[#0B1B3D] text-[#F7F1E1] hover:bg-transparent hover:text-[#0B1B3D] transition-all font-semibold">
-                        Balas Surat Ini via WA ✉
+                    <a href="https://wa.me/6285603083435?text=Kado%20digitalnya%20sangat%20indah%20dan%20elegan.%20Terima%20kasih%20banyak%20ya%20❤️✨" target="_blank" class="w-full block py-2.5 border border-[#D1D5DB]/20 text-xs bg-[#0B1B3D] text-[#F7F1E1] hover:bg-transparent hover:text-[#0B1B3D] transition-all font-semibold">
+                        Kirim doamu pada diri sendiri ✉
                     </a>
                 </div>
             </div>
@@ -306,7 +306,7 @@
         <!-- FOOTER ELEGAN -->
         <footer class="w-full py-8 text-center text-xs text-[#3D2D21]/50 border-t border-[#B8860B]/20 bg-white/40">
             <div class="mb-2">⚜</div>
-            <p>© 2026 • Dibuat dengan Penuh Ketulusan & Keanggunan Abadi</p>
+            <p>© 2026 • Dibuat dengan Penuh Cinta & Ketulusan</p>
         </footer>
 
     </main>
@@ -327,9 +327,9 @@
         let isBlown = false;     
 
         const phrases = [
-            "Waktu berganti, namun pesonamu tetap abadi...",
-            "Di hari istimewa ini, izinkan memori menari...",
-            "Sebab bagiku, kamu adalah keanggunan yang konstan."
+            "Selamat bertambah usia!...",
+            "26 hanyalah angka...",
+            "Hiduplah dengan penuh makna."
         ];
         
         // SEQUENCE FOTO SURAT (1-6)
