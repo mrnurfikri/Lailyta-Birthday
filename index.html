@@ -407,7 +407,7 @@
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ audio: true })
                 .then(function(stream) {
-                    statusDiv.textContent = "🎙️ Sensor aktif. Embuskan tiupan Anda!"; statusDiv.style.color = "#556B2F";
+                    statusDiv.textContent = "🎙️ Ayo coba tiup dibawah!"; statusDiv.style.color = "#556B2F";
                     
                     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                     const analyser = audioContext.createAnalyser();
