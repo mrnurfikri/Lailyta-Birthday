@@ -72,7 +72,7 @@
             background-repeat: no-repeat;
         }
 
-        /* Bingkai Ornamen Victorian Tradisional (Untuk Bagian Timeline) */
+        /* Bingkai Ornamen Victorian Tradisional (Timeline) */
         .victorian-border {
             border: 4px double #B8860B;
             outline: 1px solid #B8860B;
@@ -83,38 +83,15 @@
         .victorian-border::before { content: "❦"; position: absolute; top: 2px; left: 5px; color: #B8860B; font-size: 1.2rem; }
         .victorian-border::after { content: "❦"; position: absolute; bottom: 2px; right: 5px; color: #B8860B; font-size: 1.2rem; transform: rotate(180deg); }
 
-        /* BARU: BINGKAI CELESTIAL ART NOUVEAU (Khusus Kotak Surat Harapan) */
-        .celestial-stardust-border {
-            border: 1px solid #0B1B3D; /* Deep Celestial Navy Blue */
-            outline: 1px dashed #D1D5DB; /* Metallic Silver Highlight */
-            outline-offset: -5px;
-            padding: 2.5rem 2rem;
+        /* PERBAIKAN: WADAH BINGKAI MENGGUNAKAN FORMAT .JPG SESUAI REKUES */
+        .custom-image-frame-box {
+            background-image: url('bg_frame_wish.jpg');
+            background-size: 100% 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 3.5rem 2.5rem; 
             position: relative;
-            /* Efek Bayangan Lembut Deep Midnight Blue Membuat Kotak Terlihat Melayang Magis di Luar Angkasa */
-            box-shadow: 0 30px 60px -15px rgba(11, 27, 61, 0.4), 0 20px 40px -20px rgba(0, 0, 0, 0.6);
-        }
-        
-        /* Ornamen Sudut Berbentuk Galaksi Pusaran (Organic Filigree Galaxy) */
-        .celestial-stardust-border::before {
-            content: "🌀"; /* Simbol pusaran kosmis */
-            font-size: 1rem;
-            position: absolute;
-            top: -4px;
-            left: -2px;
-            color: #0B1B3D;
-            text-shadow: 1px 1px 0px #D1D5DB; /* Efek kilatan perak perwujudan bintang */
-            filter: opacity(0.85);
-        }
-        
-        .celestial-stardust-border::after {
-            content: "🌀";
-            font-size: 1rem;
-            position: absolute;
-            bottom: -4px;
-            right: -2px;
-            color: #0B1B3D;
-            text-shadow: -1px -1px 0px #D1D5DB;
-            filter: opacity(0.85);
+            box-shadow: 0 35px 70px -15px rgba(11, 27, 61, 0.45);
         }
 
         /* Efek Ketikan Teks */
@@ -216,25 +193,29 @@
             </div>
         </section>
 
-        <section id="wish-section" class="bg-section-wish min-h-screen flex flex-col items-center justify-center text-center px-4 hidden relative overflow-hidden">
+        <section id="wish-section" class="bg-section-wish min-h-screen flex flex-col items-center justify-center px-4 hidden relative overflow-hidden">
             
-            <div class="max-w-md w-full bg-[#F7F1E1]/90 backdrop-blur-sm celestial-stardust-border transition-all duration-1000 z-10" id="wish-box">
-                <h2 class="text-xl font-bold mb-2 text-[#0B1B3D]">Manifestasi Harapan 📜</h2>
-                <p class="text-xs text-[#420C14] mb-6 italic font-medium">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
+            <div class="max-w-md w-full flex flex-col items-center z-10" id="wish-master-container">
                 
-                <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1]/50 border-2 border-dashed border-[#0B1B3D]/30 text-[#0B1B3D] placeholder-[#0B1B3D]/40 focus:outline-none focus:border-[#0B1B3D] text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
+                <div class="w-full bg-[#F7F1E1]/80 backdrop-blur-sm custom-image-frame-box text-center transition-all duration-1000" id="wish-box">
+                    <h2 class="text-xl font-bold mb-2 text-[#0B1B3D]">Manifestasi Harapan 📜</h2>
+                    <p class="text-xs text-[#420C14] mb-5 italic font-medium">Goreskan doa terbaikmu, biarkan semesta menerbangkannya.</p>
+                    
+                    <textarea id="wish-input" rows="4" class="w-full p-4 bg-[#F7F1E1]/40 border border-[#0B1B3D]/10 text-[#0B1B3D] placeholder-[#0B1B3D]/30 focus:outline-none text-xs leading-relaxed tracking-wide italic resize-none" placeholder="Tuliskan doamu di lembar usang ini..."></textarea>
+                </div>
                 
-                <button onclick="flyWish()" class="mt-5 w-full py-3 bg-[#0B1B3D] text-[#F7F1E1] text-sm font-serif-ornament hover:bg-[#420C14] transition-all cursor-pointer border border-[#D1D5DB]/30 shadow-md">
+                <button onclick="flyWish()" id="btn-submit-wish" class="mt-6 w-11/12 py-3 bg-[#0B1B3D] text-[#F7F1E1] text-xs font-serif-ornament hover:bg-[#420C14] transition-all cursor-pointer border border-[#D1D5DB]/20 shadow-xl tracking-widest rounded-none">
                     Terbangkan Harapan Ke Angkasa ✧
                 </button>
+
             </div>
 
             <div id="popup-message" class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-700 px-4">
-                <div class="bg-[#F7F1E1] celestial-stardust-border max-w-sm w-full text-center shadow-2xl p-8 relative scale-90 transition-transform duration-700" id="popup-card">
-                    <span class="text-[#0B1B3D] text-2xl block mb-2">✧ ✨ ✧</span>
+                <div class="bg-[#F7F1E1]/90 backdrop-blur-sm custom-image-frame-box max-w-sm w-full text-center shadow-2xl transition-transform duration-700" id="popup-card">
+                    <span class="text-[#0B1B3D] text-2xl block mb-1">✧ ✨ ✧</span>
                     <h3 class="text-xl font-bold text-[#0B1B3D] mb-3">Harapanmu Telah Terkirim!</h3>
                     
-                    <p id="duplicated-wish" class="text-xs text-[#0B1B3D]/80 italic border-y border-[#0B1B3D]/20 py-3 my-4 bg-white/40 max-h-24 overflow-y-auto"></p>
+                    <p id="duplicated-wish" class="text-xs text-[#0B1B3D]/80 italic border-y border-[#0B1B3D]/10 py-3 my-4 bg-white/40 max-h-24 overflow-y-auto"></p>
                     
                     <p class="text-sm font-semibold text-[#556B2F] leading-relaxed mb-6 italic">
                         "Semoga doa terbaikmu bisa dikabulkan dan didengar oleh semesta raya. Selalu bahagia ya! ❤️"
@@ -274,9 +255,11 @@
             "Sebab bagiku, kamu adalah keanggunan yang konstan."
         ];
         
+        // SEQUENCE FOTO SURAT (1-6)
         const envelopeFrames = ["surat1.png", "surat2.png", "surat3.png", "surat4.png", "surat5.png", "surat6.png"];
         envelopeFrames.forEach(f => { const img = new Image(); img.src = f; });
 
+        // SEQUENCE FOTO KUE (1-12)
         const cakeFrames = [];
         for (let i = 1; i <= 12; i++) {
             cakeFrames.push(`kue${i}.png`);
@@ -408,11 +391,14 @@
             if(!txt.trim()) { alert("Mohon goreskan impian Anda terlebih dahulu pada kertas surat."); return; }
 
             document.getElementById('duplicated-wish').textContent = `"${txt}"`;
-            const wishBox = document.getElementById('wish-box');
-            wishBox.style.transform = 'translateY(-140vh) scale(0.1) rotate(-15deg)'; wishBox.style.opacity = '0';
+            
+            const wishMaster = document.getElementById('wish-master-container');
+            wishMaster.style.transform = 'translateY(-140vh) scale(0.1) rotate(-15deg)'; 
+            wishMaster.style.opacity = '0';
+            wishMaster.style.transition = 'all 1.1s cubic-bezier(0.4, 0, 0.2, 1)';
 
             setTimeout(() => {
-                wishBox.classList.add('hidden');
+                wishMaster.classList.add('hidden');
                 let end = Date.now() + (2 * 1000);
                 (function frame() {
                     confetti({ particleCount: 2, angle: 60, spread: 45, origin: { x: 0 }, colors: ['#0B1B3D', '#B8860B'] });
