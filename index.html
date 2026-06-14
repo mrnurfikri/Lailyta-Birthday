@@ -77,13 +77,13 @@
             border: 4px double #B8860B;
             outline: 1px solid #B8860B;
             outline-offset: -8px;
-            padding: 2rem;
+            padding: 1.5rem;
             position: relative;
         }
         .victorian-border::before { content: "❦"; position: absolute; top: 2px; left: 5px; color: #B8860B; font-size: 1.2rem; }
         .victorian-border::after { content: "❦"; position: absolute; bottom: 2px; right: 5px; color: #B8860B; font-size: 1.2rem; transform: rotate(180deg); }
 
-        /* PERBAIKAN: WADAH BINGKAI MENGGUNAKAN FORMAT .JPG SESUAI REKUES */
+        /* WADAH BINGKAI GAMBAR KUSTOM UNTUK WISH BOX */
         .custom-image-frame-box {
             background-image: url('bg_frame_wish.jpg');
             background-size: 100% 100%; 
@@ -151,26 +151,64 @@
             <div class="text-center text-[#B8860B] text-2xl mb-4">❃ ──────── ❃</div>
             <h2 class="text-3xl font-bold text-center mb-16 text-[#420C14]">Lembaran Memori Kuno</h2>
             
-            <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/40 h-[75%] top-40"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/30 h-[85%] top-40"></div>
             <div class="max-w-4xl mx-auto px-6 relative space-y-16">
 
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-xl">
-                        <span class="text-xs text-[#556B2F] font-semibold block mb-3 font-serif-ornament">I. Awal Mula Kisah</span>
-                        <img src="https://picsum.photos/400/250?random=1" alt="Memori 1" class="w-full h-44 object-cover sepia border border-[#3D2D21]/20">
-                        <p class="text-xs text-[#3D2D21]/90 mt-4 leading-relaxed italic">"Waktu seolah berhenti saat pertama kali tatap itu beradu. Di situ, lembar pertama kisah kita resmi ditulis."</p>
+                        <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">I. Awal Pertemuan</span>
+                        <img src="memori1.jpg" alt="Memori 1" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
+                        <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Hari di mana semesta pertama kali mempertemukan kita. Tatapan sederhana yang ternyata menjadi awal dari cerita panjang ini."</p>
                     </div>
                     <div class="hidden md:block w-2/12"></div>
                     <div class="w-full md:w-5/12"></div>
                 </div>
 
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                    <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm p-6 rounded-none border-l-4 border-r-4 border-[#800000] shadow-md relative">
-                        <div class="absolute -top-3 left-4 bg-[#FAF4E8] px-2 text-xs text-[#420C14] italic font-serif-ornament">Dua Jiwa, Satu Frekuensi</div>
-                        <div class="space-y-3 mt-2 text-xs leading-relaxed">
-                            <p class="text-right text-[#420C14] italic">"Kemana kita akan melangkah esok hari?..."</p>
-                            <p class="text-left text-[#556B2F] font-semibold">"Ke manapun tak masalah, asal genggaman jemarimu tak pernah lepas."</p>
-                        </div>
+                    <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm victorian-border shadow-xl">
+                        <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">II. Tawa Pertama</span>
+                        <img src="memori2.jpg" alt="Memori 2" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
+                        <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Senyum dan tawa pertamamu yang berhasil terekam. Di momen ini aku sadar, kebahagiaanmu adalah tujuanku."</p>
+                    </div>
+                    <div class="hidden md:block w-2/12"></div>
+                    <div class="w-full md:w-5/12"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
+                    <div class="w-full md:w-5/12 bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-xl">
+                        <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">III. Perjalanan Bersama</span>
+                        <img src="memori3.jpg" alt="Memori 3" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
+                        <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Melangkah bersama menyusuri jalanan, berbagi cerita tentang dunia, dan menyadari bahwa setiap tempat terasa indah bersamamu."</p>
+                    </div>
+                    <div class="hidden md:block w-2/12"></div>
+                    <div class="w-full md:w-5/12"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
+                    <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm victorian-border shadow-xl">
+                        <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">IV. Momen Teduh</span>
+                        <img src="memori4.jpg" alt="Memori 4" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
+                        <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Saat dunia terasa bising dan melelahkan, bersamamu selalu menjadi tempat paling teduh untuk pulang dan menenangkan jiwa."</p>
+                    </div>
+                    <div class="hidden md:block w-2/12"></div>
+                    <div class="w-full md:w-5/12"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
+                    <div class="w-full md:w-5/12 bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-xl">
+                        <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">V. Menatap Hari Esok</span>
+                        <img src="memori5.jpg" alt="Memori 5" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
+                        <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Membicarakan masa depan, impian-impian kecil, dan berharap semesta bersedia merajut garis takdir kita selamanya."</p>
+                    </div>
+                    <div class="hidden md:block w-2/12"></div>
+                    <div class="w-full md:w-5/12"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
+                    <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm victorian-border shadow-xl">
+                        <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">VI. Hari Spesial Ini</span>
+                        <img src="memori6.jpg" alt="Memori 6" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
+                        <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Dan hari ini, di usiamu yang baru, langkah kita masih beriringan. Selamat merayakan hari kelahiranmu, keanggunanku."</p>
                     </div>
                     <div class="hidden md:block w-2/12"></div>
                     <div class="w-full md:w-5/12"></div>
