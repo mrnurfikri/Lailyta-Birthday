@@ -159,7 +159,7 @@
             </div>
         </section>
 
-        <!-- SECSION 2: LEMBARAN MEMORI (UKURAN GAMBAR PRESET 9:16) -->
+        <!-- SECSION 2: LEMBARAN MEMORI -->
         <section class="bg-section-timeline py-20 text-[#3D2D21] relative border-y border-[#B8860B]/20">
             <div class="text-center text-[#B8860B] text-2xl mb-4">❃ ──────── ❃</div>
             <h2 class="text-3xl font-bold text-center mb-16 text-[#420C14]">Lembaran Memori Kuno</h2>
@@ -168,11 +168,10 @@
             <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/30 h-[82%] top-40"></div>
             <div class="max-w-4xl mx-auto px-6 relative space-y-16">
 
-                <!-- FOTO 1 - SISI KIRI (Dikunci Presisi ke Rasio 9:16) -->
+                <!-- FOTO 1 - SISI KIRI (Rasio Potret Vertikal 9:16) -->
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">I. Awal Pertemuan</span>
-                        <!-- aspect-[9/16] menjamin bentuk potret vertikal yang seimbang -->
                         <div class="w-full aspect-[9/16] overflow-hidden border border-[#3D2D21]/10 rounded-sm">
                             <img src="memori1.jpg" alt="Memori 1" class="w-full h-full object-cover">
                         </div>
@@ -182,11 +181,12 @@
                     <div class="w-full md:w-5/12"></div>
                 </div>
 
-                <!-- FOTO 2 - SISI KANAN (Dikunci Presisi ke Rasio 9:16) -->
+                <!-- PERBAIKAN: FOTO 2 - SISI KANAN (Diubah ke Rasio Lanskap Horisontal 16:9) -->
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
                     <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">II. Tawa Pertama</span>
-                        <div class="w-full aspect-[9/16] overflow-hidden border border-[#3D2D21]/10 rounded-sm">
+                        <!-- aspect-[16/9] mengunci bentuk gambar lanskap melebar secara ideal -->
+                        <div class="w-full aspect-[16/9] overflow-hidden border border-[#3D2D21]/10 rounded-sm">
                             <img src="memori2.jpg" alt="Memori 2" class="w-full h-full object-cover">
                         </div>
                         <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Senyum dan tawa pertamamu yang berhasil terekam. Di momen ini aku sadar, kebahagiaanmu adalah tujuanku."</p>
@@ -195,7 +195,7 @@
                     <div class="w-full md:w-5/12"></div>
                 </div>
 
-                <!-- FOTO 3 - SISI KIRI (Dikunci Presisi ke Rasio 9:16) -->
+                <!-- FOTO 3 - SISI KIRI (Rasio Potret Vertikal 9:16) -->
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">III. Perjalanan Bersama</span>
@@ -208,7 +208,7 @@
                     <div class="w-full md:w-5/12"></div>
                 </div>
 
-                <!-- FOTO 4 - SISI KANAN (Dikunci Presisi ke Rasio 9:16) -->
+                <!-- FOTO 4 - SISI KANAN (Rasio Potret Vertikal 9:16) -->
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
                     <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">IV. Momen Teduh</span>
@@ -221,7 +221,7 @@
                     <div class="w-full md:w-5/12"></div>
                 </div>
 
-                <!-- FOTO 5 - SISI KIRI (Dikunci Presisi ke Rasio 9:16) -->
+                <!-- FOTO 5 - SISI KIRI (Rasio Potret Vertikal 9:16) -->
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">V. Hari Spesial Ini</span>
@@ -236,7 +236,7 @@
 
             </div>
 
-            <!-- BARU: KUTIPAN KATA MUTIARA DI BAGIAN BAWAH TIMELINE -->
+            <!-- KUTIPAN KATA MUTIARA DI BAGIAN BAWAH TIMELINE -->
             <div class="max-w-xl mx-auto mt-24 px-6 text-center" data-aos="fade-up">
                 <div class="bg-[#FAF4E8]/80 backdrop-blur-sm border-y-2 border-dashed border-[#B8860B]/40 py-8 px-6 shadow-md">
                     <span class="text-[#B8860B] text-xl block mb-2">⚜ ❃ ⚜</span>
@@ -442,6 +442,7 @@
             }
         }
 
+        // ANIMASI PADAM KUE
         function triggerExtinguishSequence() {
             if (isBlown) return;
             isBlown = true;
