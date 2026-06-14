@@ -151,7 +151,7 @@
             <div class="text-center text-[#B8860B] text-2xl mb-4">❃ ──────── ❃</div>
             <h2 class="text-3xl font-bold text-center mb-16 text-[#420C14]">Lembaran Memori Kuno</h2>
             
-            <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/30 h-[85%] top-40"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/30 h-[80%] top-40"></div>
             <div class="max-w-4xl mx-auto px-6 relative space-y-16">
 
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
@@ -177,7 +177,7 @@
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">III. Perjalanan Bersama</span>
-                        <img src="memori3.jpg" alt="Memori 3" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
+                        <img src="memori3.JPG" alt="Memori 3" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
                         <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Melangkah bersama menyusuri jalanan, berbagi cerita tentang dunia, dan menyadari bahwa setiap tempat terasa indah bersamamu."</p>
                     </div>
                     <div class="hidden md:block w-2/12"></div>
@@ -187,7 +187,7 @@
                 <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
                     <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm victorian-border shadow-xl">
                         <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">IV. Momen Teduh</span>
-                        <img src="memori4.jpg" alt="Memori 4" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
+                        <img src="memori4.jpeg" alt="Memori 4" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
                         <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Saat dunia terasa bising dan melelahkan, bersamamu selalu menjadi tempat paling teduh untuk pulang dan menenangkan jiwa."</p>
                     </div>
                     <div class="hidden md:block w-2/12"></div>
@@ -196,18 +196,8 @@
 
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
                     <div class="w-full md:w-5/12 bg-[#F7F1E1]/90 backdrop-blur-sm victorian-border shadow-xl">
-                        <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">V. Menatap Hari Esok</span>
-                        <img src="memori5.jpg" alt="Memori 5" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
-                        <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Membicarakan masa depan, impian-impian kecil, dan berharap semesta bersedia merajut garis takdir kita selamanya."</p>
-                    </div>
-                    <div class="hidden md:block w-2/12"></div>
-                    <div class="w-full md:w-5/12"></div>
-                </div>
-
-                <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
-                    <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm victorian-border shadow-xl">
-                        <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">VI. Hari Spesial Ini</span>
-                        <img src="memori6.jpg" alt="Memori 6" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
+                        <span class="text-xs text-[#556B2F] font-semibold block mb-2 font-serif-ornament">V. Hari Spesial Ini</span>
+                        <img src="memori5.jpeg" alt="Memori 5" class="w-full h-44 object-cover border border-[#3D2D21]/10 rounded-sm">
                         <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Dan hari ini, di usiamu yang baru, langkah kita masih beriringan. Selamat merayakan hari kelahiranmu, keanggunanku."</p>
                     </div>
                     <div class="hidden md:block w-2/12"></div>
@@ -296,6 +286,10 @@
         // SEQUENCE FOTO SURAT (1-6)
         const envelopeFrames = ["surat1.png", "surat2.png", "surat3.png", "surat4.png", "surat5.png", "surat6.png"];
         envelopeFrames.forEach(f => { const img = new Image(); img.src = f; });
+
+        // PERBAIKAN PRELOAD SIKLUS FOTO MEMORI TIMELINE BARU (1-5 SAJA)
+        const timelineFrames = ["memori1.jpg", "memori2.jpg", "memori3.JPG", "memori4.jpeg", "memori5.jpeg"];
+        timelineFrames.forEach(f => { const img = new Image(); img.src = f; });
 
         // SEQUENCE FOTO KUE (1-12)
         const cakeFrames = [];
