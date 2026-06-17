@@ -58,7 +58,6 @@
             background-repeat: no-repeat;
         }
 
-        /* REVISI: Mengembalikan ekstensi file menjadi .jpg kecil */
         .bg-section-ucapan {
             background-image: url('bg_ucapan.jpg');
             background-size: cover;
@@ -159,7 +158,7 @@
             <div class="text-center text-[#B8860B] text-2xl mb-4">❃ ──────── ❃</div>
             <h2 class="text-3xl font-bold text-center mb-16 text-[#420C14]">Lembaran Memori</h2>
             
-            <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/30 h-[84%] top-40"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-[#B8860B]/30 h-[87%] top-40"></div>
             <div class="max-w-4xl mx-auto px-6 relative space-y-16">
 
                 <div class="flex flex-col md:flex-row items-center justify-between w-full" data-aos="fade-right">
@@ -217,6 +216,18 @@
                             <img src="memori5.jpeg" alt="Memori 5" class="w-full h-full object-cover">
                         </div>
                         <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Waktu memang tak pernah menunggu. Foto ini diabadikan setahun lalu dalam kehangatan dan kebersamaan yang terasa begitu nyata. Dan kini, gadis kecil berponi itu telah tumbuh menjadi wanita dewasa secantik ini!"</p>
+                    </div>
+                    <div class="hidden md:block w-2/12"></div>
+                    <div class="w-full md:w-5/12"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full" data-aos="fade-left">
+                    <div class="w-full md:w-5/12 bg-[#FAF4E8]/90 backdrop-blur-sm victorian-border shadow-xl">
+                        <span class="block w-full text-center text-xl md:text-2xl font-bold text-[#420C14] mb-3 font-serif-ornament border-b border-[#B8860B]/20 pb-1">Hari Ini & Selamanya</span>
+                        <div class="w-full aspect-[4/3] overflow-hidden border border-[#3D2D21]/10 rounded-sm bg-stone-100">
+                            <img src="animasi_memori.gif" alt="Memori Animasi" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs text-[#3D2D21]/90 mt-3 leading-relaxed italic">"Setiap detik yang bergerak lambat, merekam potongan tawa dan cerita indah yang tidak akan pernah pudar, melainkan menetap abadi di dalam ingatan."</p>
                     </div>
                     <div class="hidden md:block w-2/12"></div>
                     <div class="w-full md:w-5/12"></div>
@@ -334,7 +345,7 @@
         envelopeFrames.forEach(f => { const img = new Image(); img.src = f; });
 
         // SEQUENCE FOTO MEMORI TIMELINE
-        const timelineFrames = ["memori1.jpg", "memori2.jpg", "memori3.JPG", "memori4.jpeg", "memori5.jpeg"];
+        const timelineFrames = ["memori1.jpg", "memori2.jpg", "memori3.JPG", "memori4.jpeg", "memori5.jpeg", "animasi_memori.gif"];
         timelineFrames.forEach(f => { const img = new Image(); img.src = f; });
 
         // SEQUENCE FOTO KUE (1-12)
